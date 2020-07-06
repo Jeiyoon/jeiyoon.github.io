@@ -125,9 +125,6 @@ name {
   -moz-transition: opacity .2s ease-in-out;
   -webkit-transition: opacity .2s ease-in-out;
 }
-/*  
-background-color: #ffffd0;
-*/
 span.highlight {
-  background-color: #00FF00;
+  background-color: #ffffd0;
 }
