@@ -1,0 +1,13 @@
+@Article{app11146624,
+AUTHOR = {Park, Jeiyoon and Lee, Chanhee and Park, Chanjun and Kim, Kuekyeng and Lim, Heuiseok},
+TITLE = {Variational Reward Estimator Bottleneck: Towards Robust Reward Estimator for Multidomain Task-Oriented Dialogue},
+JOURNAL = {Applied Sciences},
+VOLUME = {11},
+YEAR = {2021},
+NUMBER = {14},
+ARTICLE-NUMBER = {6624},
+URL = {https://www.mdpi.com/2076-3417/11/14/6624},
+ISSN = {2076-3417},
+ABSTRACT = {Despite its significant effectiveness in adversarial training approaches to multidomain task-oriented dialogue systems, adversarial inverse reinforcement learning of the dialogue policy frequently fails to balance the performance of the reward estimator and policy generator. During the optimization process, the reward estimator frequently overwhelms the policy generator, resulting in excessively uninformative gradients. We propose the variational reward estimator bottleneck (VRB), which is a novel and effective regularization strategy that aims to constrain unproductive information flows between inputs and the reward estimator. The VRB focuses on capturing discriminative features by exploiting information bottleneck on mutual information. Quantitative analysis on a multidomain task-oriented dialogue dataset demonstrates that the VRB significantly outperforms previous studies.},
+DOI = {10.3390/app11146624}
+}
