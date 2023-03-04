@@ -74,40 +74,7 @@
               <heading>Research</heading>
             </td>
           </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/figure_qualitative-1.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Analysis of Utterance Embeddings and Clustering Methods Related to Intent Induction for Task-Oriented Dialogue</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Yoonna Jang,
-              Chanhee Lee,
-              Heuiseok Lim
-              <br>
-        <em>2022, Being under the review as a workshop paper</em>  
-              <br>
-              <a href="https://arxiv.org/abs/2212.02021">[arxiv]</a>
-              <a href="https://github.com/Jeiyoon/dstc11-track2">[github]</a>  
-              <p></p>
-              <p>This paper investigates unsupervised approaches to overcome quintessential challenges in designing task-oriented dialog schema: assigning intent labels to each dialog turn (intent clustering) and generating a set of intents based on the intent clustering methods (intent induction). We postulate there are two salient factors for automatic induction of intents: (1) clustering algorithm for intent labeling and (2) user utterance embedding space. We compare existing off-the-shelf clustering models and embeddings based on DSTC11 evaluation. Our extensive experiments demonstrate that we sholud add two huge caveat that selection of utterance embedding and clustering method in intent induction task should be very careful. We also present that pretrained MiniLM with Agglomerative clustering shows significant improvement in NMI, ARI, F1, accuracy and example coverage in intent induction tasks. The source code for reimplementation will be available at <a href="https://github.com/Jeiyoon/dstc11-track2">Github</a>.</p>
-            </td>
-          </tr>        
+        </tbody></table>       
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr onmouseout="ff_stop()" onmouseover="ff_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
@@ -136,10 +103,45 @@
         <em>2022, Being under the review as a conference paper (Paper notification: April 19, 2023)</em>  
               <br>
               <a href="https://arxiv.org/abs/2207.01814">[arxiv]</a>
+              [bibtex]
               <p></p>
               <p>As the number of video content has mushroomed in recent years, automatic video summarization has come useful when we want to just peek at the content of the video. However, there are two underlying limitations in generic video summarization task. First, most previous approaches read in just visual features as input, leaving other modality features behind. Second, existing datasets for generic video summarization are relatively insufficient to train a caption generator used for extracting text information from a video and to train the multimodal feature extractors. To address these two problems, this paper proposes the Multimodal Frame-Scoring Transformer (MFST), a framework exploiting visual, text, and audio features and scoring a video with respect to frames. Our MFST framework first extracts each modality features (audio-visual-text) using pretrained encoders. Then, MFST trains the multimodal frame-scoring transformer that uses multimodal representation based on extracted features as inputs and predicts frame-level scores. Our extensive experiments with previous models and ablation studies on TVSum and SumMe datasets demonstrate the effectiveness and superiority of our proposed method by a large margin in both F1 score and Rank-based evaluation.</p>
             </td>
-          </tr> 
+          </tr>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <img src='images/figure_qualitative-1.png' width="160">
+              </div>
+              <script type="text/javascript">
+                function ff_start() {
+                  document.getElementById('ff_image').style.opacity = "1";
+                }
+
+                function ff_stop() {
+                  document.getElementById('ff_image').style.opacity = "0";
+                }
+                ff_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <papertitle>Analysis of Utterance Embeddings and Clustering Methods Related to Intent Induction for Task-Oriented Dialogue</papertitle>
+              <br>
+              <strong>Jeiyoon Park</strong>,
+              Yoonna Jang,
+              Chanhee Lee,
+              Heuiseok Lim
+              <br>
+        <em>2022, The Eleventh Dialog System Technology Challenge (DSTC11) </em>  
+              <br>
+              <a href="https://arxiv.org/abs/2212.02021">[arxiv]</a>
+              <a href="https://github.com/Jeiyoon/dstc11-track2">[github]</a>
+              [bibtex]
+              <p></p>
+              <p>This paper investigates unsupervised approaches to overcome quintessential challenges in designing task-oriented dialog schema: assigning intent labels to each dialog turn (intent clustering) and generating a set of intents based on the intent clustering methods (intent induction). We postulate there are two salient factors for automatic induction of intents: (1) clustering algorithm for intent labeling and (2) user utterance embedding space. We compare existing off-the-shelf clustering models and embeddings based on DSTC11 evaluation. Our extensive experiments demonstrate that we sholud add two huge caveat that selection of utterance embedding and clustering method in intent induction task should be very careful. We also present that pretrained MiniLM with Agglomerative clustering shows significant improvement in NMI, ARI, F1, accuracy and example coverage in intent induction tasks. The source code for reimplementation will be available at <a href="https://github.com/Jeiyoon/dstc11-track2">Github</a>.</p>
+            </td>
+          </tr>           
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr onmouseout="ff_stop()" onmouseover="ff_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
@@ -169,7 +171,7 @@
         <em>Applied Sciences (SCI)</em>, 2021  
               <br>
               <a href="https://www.mdpi.com/2076-3417/11/14/6624">[journal]</a>
-              <a href="https://arxiv.org/abs/2006.00417">[arxiv]</a>              
+              <a href="bibtex/Jeiyoon-AppliedSciences.txt">[bibtex]</a>
               <p></p>
               <p>Despite its significant effectiveness in adversarial training approaches to multidomain task-oriented dialogue systems, adversarial inverse reinforcement learning of the dialogue policy frequently fails to balance the performance of the reward estimator and policy generator. During the optimization process, the reward estimator frequently overwhelms the policy generator, resulting in excessively uninformative gradients. We propose the variational reward estimator bottleneck (VRB), which is a novel and effective regularization strategy that aims to constrain unproductive information flows between inputs and the reward estimator. The VRB focuses on capturing discriminative features by exploiting information bottleneck on mutual information. Quantitative analysis on a multidomain task-oriented dialogue dataset demonstrates that the VRB significantly outperforms previous studies. </p>
             </td>
