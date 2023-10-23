@@ -1,0 +1,15 @@
+@inproceedings{park-etal-2023-analysis,
+    title = "Analysis of Utterance Embeddings and Clustering Methods Related to Intent Induction for Task-Oriented Dialogue",
+    author = "Park, Jeiyoon  and
+      Jang, Yoonna  and
+      Lee, Chanhee  and
+      Lim, Heuiseok",
+    booktitle = "Proceedings of The Eleventh Dialog System Technology Challenge",
+    month = sep,
+    year = "2023",
+    address = "Prague, Czech Republic",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.dstc-1.8",
+    pages = "57--66",
+    abstract = "The focus of this work is to investigate unsupervised approaches to overcome quintessential challenges in designing task-oriented dialog schema: assigning intent labels to each dialog turn (intent clustering) and generating a set of intents based on the intent clustering methods (intent induction). We postulate there are two salient factors for automatic induction of intents: (1) clustering algorithm for intent labeling and (2) user utterance embedding space. We compare existing off-the-shelf clustering models and embeddings based on DSTC11 evaluation. Our extensive experiments demonstrate that the combined selection of utterance embedding and clustering method in the intent induction task should be carefully considered. We also present that pretrained MiniLM with Agglomerative clustering shows significant improvement in NMI, ARI, F1, accuracy and example coverage in intent induction tasks. The source codes are available at https://github.com/Jeiyoon/dstc11-track2.",
+}
