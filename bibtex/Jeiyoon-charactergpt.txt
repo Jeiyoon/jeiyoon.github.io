@@ -1,0 +1,19 @@
+@inproceedings{park-etal-2025-charactergpt,
+    title = "{C}haracter{GPT}: A Persona Reconstruction Framework for Role-Playing Agents",
+    author = "Park, Jeiyoon  and
+      Park, Chanjun  and
+      Lim, Heuiseok",
+    editor = "Chen, Weizhu  and
+      Yang, Yi  and
+      Kachuee, Mohammad  and
+      Fu, Xue-Yong",
+    booktitle = "Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 3: Industry Track)",
+    month = apr,
+    year = "2025",
+    address = "Albuquerque, New Mexico",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.naacl-industry.24/",
+    pages = "287--303",
+    ISBN = "979-8-89176-194-0",
+    abstract = "The recent introduction of the Assistants API highlights its potential for large language models (LLMs) in role-playing agents (RPA). However, maintaining consistent character personas remains a significant challenge due to variability in information extraction, which frequently omits critical elements such as backstory or interpersonal relationships. To address this limitation, we introduce CharacterGPT, a framework designed to dynamically reconstruct character personas through Character Persona Training (CPT). This approach incrementally updates personas by extracting traits from chapter-wise novel summaries, reflecting the progression of the narrative. Our framework is evaluated through Big Five personality evaluations and creative tasks, in which characters generate original narratives, demonstrating the efficacy of CharacterGPT in preserving persona consistency. The code and results are available at https://github.com/Jeiyoon/charactergpt"
+}
