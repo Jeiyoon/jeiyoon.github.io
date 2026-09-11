@@ -1,2774 +1,774 @@
-<!DOCTYPE HTML>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- Hi, Jon Here. Please DELETE the two <script> tags below if you use this HTML, otherwise my analytics will track your page -->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-7580334-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-7580334-2');
-  </script>
-
-  <title>Jeiyoon Park</title>
-  
-  <meta name="author" content="Jeiyoon Park">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  <link rel="icon" type="image/jpg" href="images/cake.jpg">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#000000">
+  <meta name="author" content="Jeiyoon Park">
+  <meta name="description" content="Jeiyoon Park, AI Research Engineer at Smilegate. Role-Playing Agents, Game AI, AI-driven NPCs, RAG, On-Device AI, and Machine Translation.">
+  <title>Jeiyoon Park</title>
+  <link rel="icon" type="image/jpeg" href="images/cake.jpg">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #000000;
+      --line: #26262b;
+      --text: #e8e8ec;
+      --text-2: #b9b9c3;
+      --text-3: #8d8d98;
+      --link: #7ab8ff;
+      --link-hover: #ffb454;
+      --accent: #ff7a7a;
+      --plate: #ffffff;
+      --max: 880px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+            "Noto Sans", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+      overflow-wrap: break-word;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover, a:focus-visible {
+      color: var(--link-hover);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    a:focus-visible {
+      outline: 2px solid var(--link-hover);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    strong { color: #ffffff; font-weight: 700; }
+    em { color: var(--text-2); }
+    p { margin: 0 0 8px; }
+
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 36px 24px 56px;
+    }
+
+    /* ---------- intro ---------- */
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 240px;
+      gap: 36px;
+      align-items: center;
+      padding-bottom: 28px;
+    }
+    .intro h1 {
+      margin: 0 0 18px;
+      font-size: 2.125rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+      color: #ffffff;
+      text-align: center;
+    }
+    .intro p { margin: 0 0 12px; }
+    .portrait img { width: 100%; border-radius: 50%; }
+    .social {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .social a {
+      padding: 7px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.9375rem;
+      line-height: 1.3;
+    }
+    .social a:hover, .social a:focus-visible {
+      border-color: var(--link-hover);
+      text-decoration: none;
+    }
+
+    /* ---------- section jump links ---------- */
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      font-size: 0.9375rem;
+    }
+    .toc a { color: var(--text-2); padding: 4px 0; }
+    .toc a:hover, .toc a:focus-visible { color: var(--link-hover); }
+
+    /* ---------- sections ---------- */
+    section { padding-top: 40px; scroll-margin-top: 16px; }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: #ffffff;
+    }
+
+    /* ---------- news ---------- */
+    .news { list-style: none; margin: 0; padding: 0; }
+    .news li {
+      display: grid;
+      grid-template-columns: 6.5rem minmax(0, 1fr);
+      gap: 12px;
+      padding: 9px 0;
+      border-top: 1px solid var(--line);
+    }
+    .news li:first-child { border-top: 0; }
+    .news .date {
+      color: var(--text-3);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    /* ---------- entries (papers, awards, ...) ---------- */
+    .entry {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 26px;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      align-items: start;
+    }
+    .entry:first-of-type { border-top: 0; }
+    .thumb {
+      width: 160px;
+      height: 160px;
+      padding: 10px;
+      background: var(--plate);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .thumb img { max-height: 100%; object-fit: contain; }
+    .entry h3 {
+      margin: 0 0 6px;
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #ffffff;
+    }
+    .entry h3 + h3, .entry .venue + h3 { margin-top: 18px; }
+    .entry p { margin: 0 0 5px; }
+    .authors, .venue { color: var(--text-2); }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 10px;
+      font-size: 0.9375rem;
+    }
+    .links a, .links span { display: inline-block; padding: 3px 0; }
+    .links span { color: var(--text-2); }
+    .links .todo { color: var(--text-3); }
+    .desc { color: var(--text-2); margin-top: 10px; }
+    .accent { color: var(--accent); font-weight: 700; }
+
+    footer {
+      margin-top: 56px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--text-2);
+      text-align: center;
+    }
+
+    /* ---------- mobile ---------- */
+    @media (max-width: 720px) {
+      .page { padding: 22px 16px 44px; }
+      .intro { grid-template-columns: 1fr; gap: 20px; }
+      .portrait { order: -1; width: min(60vw, 220px); margin: 0 auto; }
+      .intro h1 { font-size: 1.75rem; }
+      .toc { gap: 4px 16px; }
+      section { padding-top: 34px; }
+      h2 { font-size: 1.3125rem; }
+      .news li { grid-template-columns: 1fr; gap: 0; padding: 10px 0; }
+      .news .date { font-size: 0.875rem; }
+      .entry { grid-template-columns: 1fr; gap: 14px; padding: 22px 0; }
+      .thumb { width: 140px; height: 140px; }
+      .entry h3 { font-size: 1.0625rem; }
+    }
+  </style>
 </head>
 
 <body>
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
-                <name>Jeiyoon Park</name>
-              </p>
-              <p>I'm an AI Research Engineer at <a href="https://www.smilegate.com/en">Smilegate</a>.
-              </p>
-              <p>
-                My research interests are Role-Playing Agents (RPAs), Game AI, AI-driven Non-Player Characters (NPCs), Retrieval-Augmented Generation (RAG), On-Device AI, and Machine Translation.
-              </p>
-              <p>
-                Contact: k4ke@korea.ac.kr
-              </p>
-              <p style="text-align:center">
-                <a href="https://github.com/Jeiyoon">Github</a> &nbsp/&nbsp
-                <a href="https://scholar.google.co.kr/citations?user=JGR0j9QAAAAJ&hl=ko&oi=ao">Google Scholar</a> &nbsp/&nbsp
-<!--                 <a href="https://www.semanticscholar.org/author/1733328488">Semantic Scholar</a> &nbsp/&nbsp -->
-<!--                 <a href="https://dblp.org/pid/266/7804">DBLP</a> &nbsp/&nbsp -->
-                <a href="https://www.linkedin.com/in/jeiyoon/">LinkedIn</a> &nbsp/&nbsp
-                <a href="https://huggingface.co/naruto-soop">Hugging Face</a> &nbsp/&nbsp
-<!--                 <a href="https://emphasized-canary-b64.notion.site/Research-Seminar-59bcc72d2f6e4813982f07de300bb2e0">Seminar</a> &nbsp/&nbsp -->
-                <a href="https://www.instagram.com/cloudwantsasnack/">Instagram</a> &nbsp/&nbsp
-<!--                 Twitch &nbsp &nbsp -->
-              </p>
-            </td>
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <a href="https://youtu.be/X7ymriMhoj0?feature=shared"><img style="width:100%;max-width:100%" alt="profile photo" src="images/jeiyoon_thailand.jpg" class="hoverZoomLink"></a>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>News</heading>
-              <p>
-                [Sep 2026] <a href="https://arxiv.org/abs/2601.02641">Our Paper</a> got accepted to <a href="https://2026.aaclnet.org/">AACL-IJCNLP 2026 Main Track</a>.
-                <br>
-                [May 2026] I will join <a href="https://www.smilegate.com/en">Smilegate</a> as an AI Research Engineer, where I will work with the Behavior AI Team to research and develop AI-driven NPC technologies for <a href="https://lostarkmobile.onstove.com/main">Lost Ark Mobile</a>.
-                <br>
-                [Apr 2025] I will serve as a program committee member at <a href="https://sig-edu.org/bea/2025">BEA-ACL 2025</a>.
-                <br>
-                [Feb 2025] <a href="https://aclanthology.org/2025.naacl-industry.24/">Our Paper</a> got accepted to <a href="https://2025.naacl.org/calls/industry/">NAACL 2025 Industry Track</a> (Oral).
-                <br>
-                [Nov 2024] We showcase SOOPi, an AI assistant based on streamer personas, at <a href="https://gstar.or.kr/eng">G-STAR 2024</a>. 
-                <br>
-                [Mar 2024] I will serve as a program committee member at <a href="https://sig-edu.org/bea/2024">BEA-NAACL 2024</a>.
-                <br>
-                [June 2022] Our team came in first place at 2022 <a href="https://www.microsoft.com/en-us/ai?activetab=pivot1%3aprimaryr6">Microsoft</a> Azure Virtual Hackathon. 
-                <br>
-                [Mar 2021] I interned as a NLP researcher at <a href="https://www.webtoons.com/en/">Naver Webtoon</a> (Webtoon AI), where I had a wonderful time working with Chaeheon Gwak and Seho Kim, and being mentored by <a href="https://www.linkedin.com/in/daesikkim/?locale=en_US">Daesik Kim</a> also.
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Research</heading>
-            </td>
-          </tr>
-        </tbody></table>
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/forest_qualitative.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>An Empirical Study of On-Device Translation for Real-Time Live-Stream Chat on Mobile Devices</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Daehwan Lee,
-              Changmin Yeo,
-              Yongshin Han,
-              Minseop Kim
-              <br>
-        <em>AACL-IJCNLP, 2026</em> 
-              <br>
-              <a href="https://arxiv.org/abs/2601.02641">[arXiv]</a>
-              [dataset]
-              [github]              
-<!--               <a href="https://github.com/Jeiyoon/charactergpt">[github]</a>  -->
-<!--               <a href="data/charactergpt_poster.pdf">[poster]</a>  -->
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-            </td>
-          </tr>            
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/amadeus.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Dynamic Context Adaptation for Consistent Role-Playing Agents with Retrieval-Augmented Generations</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Yongshin Han,
-              Minseop Kim,
-              Kisu Yang
-              <br>
-        <em>Preprint, 2025</em> 
-              <br>
-              <a href="https://arxiv.org/abs/2508.02016">[arXiv]</a>
-              <a href="https://huggingface.co/datasets/naruto-soop/CharacterRAG">[dataset]</a>
-              [github]              
-<!--               <a href="https://github.com/Jeiyoon/charactergpt">[github]</a>  -->
-<!--               <a href="data/charactergpt_poster.pdf">[poster]</a>  -->
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-            </td>
-          </tr>  
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/anonymous_characters.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>CharacterGPT: A Persona Reconstruction Framework for Role-Playing Agents</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Chanjun Park,
-              Heuiseok Lim
-              <br>
-        <em>NAACL, 2025 </em> <span style="color: crimson; font-weight: bold;"> (Oral Presentation)</span> 
-              <br>
-              <a href="https://arxiv.org/abs/2405.19778">[arXiv]</a>
-              <a href="bibtex/Jeiyoon-charactergpt.txt">[bibtex]</a>
-              <a href="https://github.com/Jeiyoon/charactergpt">[github]</a> 
-              <a href="data/charactergpt_poster.pdf">[poster]</a> 
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-            </td>
-          </tr>   
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/chatlang8_result.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-<!--               <papertitle>ChatLang-8: Can ChatGPT be used to generate Grammatical Error Correction Dataset?</papertitle> -->
-              <papertitle>ChatLang-8: An LLM-Based Synthetic Data Generation Framework for Grammatical Error Correction</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Chanjun Park,
-              Heuiseok Lim
-              <br>
-        <em>Preprint, 2024</em>  
-              <br>
-              <a href="https://arxiv.org/abs/2406.03202">[arXiv]</a>
-<!--               [github] -->
-<!--               <a href="https://github.com/Jeiyoon/chatlang8">[github]</a>  -->
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-            </td>
-          </tr>          
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/mfst_architecture.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Multimodal Frame-Scoring Transformer for Video Summarization</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Kiho Kwoun,
-              Chanhee Lee,
-              Heuiseok Lim
-              <br>
-        <em>Preprint, 2023</em>  
-              <br>
-              <a href="https://arxiv.org/abs/2207.01814">[arXiv]</a>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-            </td>
-          </tr>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/figure_qualitative-1.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Analysis of Utterance Embeddings and Clustering Methods Related to Intent Induction for Task-Oriented Dialogue</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Yoonna Jang,
-              Chanhee Lee,
-              Heuiseok Lim
-              <br>
-        <em>The Eleventh Dialog System Technology Challenge (DSTC11), SIGdial-INLG 2023</em>  
-              <br>
-              <a href="https://arxiv.org/abs/2212.02021">[arXiv]</a>
-              <a href="bibtex/Jeiyoon-dstc11.txt">[bibtex]</a>
-              <a href="https://github.com/Jeiyoon/dstc11-track2">[github]</a>
-              <a href="data/dstc11_poster_paper_15.pdf">[poster]</a>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-<!--               <p></p> -->
-<!--               <p>This paper investigates unsupervised approaches to overcome quintessential challenges in designing task-oriented dialog schema: assigning intent labels to each dialog turn (intent clustering) and generating a set of intents based on the intent clustering methods (intent induction). We postulate there are two salient factors for automatic induction of intents: (1) clustering algorithm for intent labeling and (2) user utterance embedding space. We compare existing off-the-shelf clustering models and embeddings based on DSTC11 evaluation. Our extensive experiments demonstrate that the combined selection of utterance embedding and clustering method in the intent induction task should be carefully considered. We also present that pretrained MiniLM with Agglomerative clustering shows significant improvement in NMI, ARI, F1, accuracy and example coverage in intent induction tasks. The source codes are available at <a href="https://github.com/Jeiyoon/dstc11-track2">https://github.com/Jeiyoon/dstc11-track2</a>.</p> -->
-            </td>
-          </tr>           
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/vrb.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Variational Reward Estimator Bottleneck: Learning Robust Reward Estimator for Multi-Domain Task-Oriented Dialog</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Chanhee Lee,
-              <a href="https://parkchanjun.github.io/">Chanjun Park,</a>
-              Kuekyeng Kim,
-              Heuiseok Lim
-              <br>
-        <em>Applied Sciences (SCI)</em>, 2021  
-              <br>
-              <a href="https://www.mdpi.com/2076-3417/11/14/6624">[journal]</a>
-              <a href="bibtex/Jeiyoon-AppliedSciences.txt">[bibtex]</a>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-<!--               <p></p> -->
-<!--               <p>Despite its significant effectiveness in adversarial training approaches to multidomain task-oriented dialogue systems, adversarial inverse reinforcement learning of the dialogue policy frequently fails to balance the performance of the reward estimator and policy generator. During the optimization process, the reward estimator frequently overwhelms the policy generator, resulting in excessively uninformative gradients. We propose the variational reward estimator bottleneck (VRB), which is a novel and effective regularization strategy that aims to constrain unproductive information flows between inputs and the reward estimator. The VRB focuses on capturing discriminative features by exploiting information bottleneck on mutual information. Quantitative analysis on a multidomain task-oriented dialogue dataset demonstrates that the VRB significantly outperforms previous studies. </p> -->
-            </td>
-          </tr>
-    
-    
-<!--           <tr onmouseout="uflow_stop()" onmouseover="uflow_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='uflow_image'>
-                  <img src='images/uflow_after.png' width="160"></div>
-                <img src='images/uflow_before.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function uflow_start() {
-                  document.getElementById('uflow_image').style.opacity = "1";
-                }
-
-                function uflow_stop() {
-                  document.getElementById('uflow_image').style.opacity = "0";
-                }
-                uflow_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/2006.04902">
-                <papertitle>What Matters in Unsupervised Optical Flow</papertitle>
-              </a>
-              <br>
-              <a href="http://ricojonschkowski.com/">Rico Jonschkowski</a>,
-              <a href="https://www.linkedin.com/in/austin-charles-stone-1ba33b138/">Austin Stone</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="https://research.google/people/ArielGordon/">Ariel Gordon</a>,
-              <a href="https://www.linkedin.com/in/kurt-konolige/">Kurt Konolige</a>,
-              <a href="https://research.google/people/AneliaAngelova/">Anelia Angelova</a>,
-              <br>
-              <em>ECCV</em>, 2020 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-              <br>
-              <a href="https://github.com/google-research/google-research/tree/master/uflow">code</a>
-              <br>
-              <p></p>
-              <p>
-              Extensive experimentation yields a simple optical flow technique that is trained on only unlabeled videos, but still works as well as supervised techniques.
-              </p>
-            </td>
-          </tr>  
-    
-          <tr onmouseout="nerf_stop()" onmouseover="nerf_start()"  bgcolor="#ffffd0">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='nerf_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="images/vase_small.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/vase_still.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function nerf_start() {
-                  document.getElementById('nerf_image').style.opacity = "1";
-                }
-
-                function nerf_stop() {
-                  document.getElementById('nerf_image').style.opacity = "0";
-                }
-                nerf_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="http://www.matthewtancik.com/nerf">
-                <papertitle>NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis
-</papertitle>
-              </a>
-              <br>
-              <a href="https://people.eecs.berkeley.edu/~bmild/">Ben Mildenhall*</a>,
-              <a href="https://people.eecs.berkeley.edu/~pratul/">Pratul Srinivasan*</a>,
-              <a href="http://matthewtancik.com/">Matthew Tancik*</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="http://cseweb.ucsd.edu/~ravir/">Ravi Ramamoorthi</a>,
-              <a href="https://www2.eecs.berkeley.edu/Faculty/Homepages/yirenng.html">Ren Ng</a>
-              <br>
-              <em>ECCV</em>, 2020 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-              <br>
-              <a href="http://www.matthewtancik.com/nerf">project page</a>
-              /
-              <a href="https://arxiv.org/abs/2003.08934">arXiv</a>
-              /
-              <a href="https://www.youtube.com/watch?v=JuH79E8rdKc">video</a>
-              /
-              <a href="https://github.com/bmild/nerf">code</a>
-              <p></p>
-              <p>
-              Training a tiny non-convolutional neural network to reproduce a scene using volume rendering achieves photorealistic view synthesis.</p>
-            </td>
-          </tr> 
-
-          <tr onmouseout="porshadmanip_stop()" onmouseover="porshadmanip_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='porshadmanip_image'>
-                  <img src='images/porshadmanip_after.jpg' width="160"></div>
-                <img src='images/porshadmanip_before.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function porshadmanip_start() {
-                  document.getElementById('porshadmanip_image').style.opacity = "1";
-                }
-
-                function porshadmanip_stop() {
-                  document.getElementById('porshadmanip_image').style.opacity = "0";
-                }
-                porshadmanip_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/2005.08925">
-                <papertitle>Portrait Shadow Manipulation</papertitle>
-              </a>
-              <br>
-              <a href="https://people.eecs.berkeley.edu/~cecilia77/">Xuaner (Cecilia) Zhang</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="https://ai.google/research/people/105312/">Yun-Ta Tsai</a>,
-              <a href="https://www.linkedin.com/in/rohit-pandey-bab10b7a/">Rohit Pandey</a>,
-              <a href="http://people.csail.mit.edu/xiuming/">Xiuming Zhang</a>,
-              <a href="http://graphics.stanford.edu/~renng/">Ren Ng</a>,
-              <a href="http://graphics.stanford.edu/~dejacobs/">David E. Jacobs</a>
-              <br>
-              <em>SIGGRAPH</em>, 2020  
-              <br>
-              <a href="https://people.eecs.berkeley.edu/~cecilia77/project-pages/portrait">project page</a> / 
-              <a href="https://www.youtube.com/watch?v=M_qYTXhzyac">video</a>
-              <p></p>
-              <p>Networks can be trained to remove shadows cast on human faces and to soften harsh lighting.</p>
-            </td>
-          </tr>  
-
-          <tr onmouseout="learnaf_stop()" onmouseover="learnaf_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='learnaf_image'>
-                  <img src='images/learnaf_after.jpg' width="160"></div>
-                <img src='images/learnaf_before.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function learnaf_start() {
-                  document.getElementById('learnaf_image').style.opacity = "1";
-                }
-
-                function learnaf_stop() {
-                  document.getElementById('learnaf_image').style.opacity = "0";
-                }
-                learnaf_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/2004.12260">
-                <papertitle>Learning to Autofocus</papertitle>
-              </a>
-              <br>
-              <a href="">Charles Herrmann</a>,
-              <a href="">Richard Strong Bowen</a>,
-              <a href="http://nealwadhwa.com">Neal Wadhwa</a>,
-              <a href="http://rahuldotgarg.appspot.com/">Rahul Garg</a>,
-              <a href="https://scholar.google.com/citations?user=BxqV_RsAAAAJ">Qiurui He</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="http://www.cs.cornell.edu/~rdz/index.htm">Ramin Zabih</a>
-              <br>
-              <em>CVPR</em>, 2020  
-              <br>
-              <a href="https://arxiv.org/abs/2004.12260">arXiv</a>
-              <p></p>
-              <p>Machine learning can be used to train cameras to autofocus (which is not the same problem as "depth from defocus").</p>
-            </td>
-          </tr>  
-
-    
-          <tr onmouseout="lighthouse_stop()" onmouseover="lighthouse_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='lh_image'><video width=100% height=100% muted autoplay loop>
-                <source src="images/rings_crop.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-                </video></div>
-                <img src='images/rings.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function lighthouse_start() {
-                  document.getElementById('lh_image').style.opacity = "1";
-                }
-
-                function lighthouse_stop() {
-                  document.getElementById('lh_image').style.opacity = "0";
-                }
-                lighthouse_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://people.eecs.berkeley.edu/~pratul/lighthouse/">
-                <papertitle>Lighthouse: Predicting Lighting Volumes for Spatially-Coherent Illumination</papertitle>
-              </a>
-              <br>
-              <a href="https://people.eecs.berkeley.edu/~pratul/">Pratul Srinivasan*</a>,
-              <a href="https://people.eecs.berkeley.edu/~bmild/">Ben Mildenhall*</a>,
-              <a href="http://matthewtancik.com/">Matthew Tancik</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="https://research.google/people/RichardTucker/">Richard Tucker</a>,
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
-              <br>
-        <em>CVPR</em>, 2020  
-              <br>
-              <a href="https://people.eecs.berkeley.edu/~pratul/lighthouse/">project page</a>
-        /
-              <a href="https://github.com/pratulsrinivasan/lighthouse">code</a>
-        /
-              <a href="https://arxiv.org/abs/2003.08367">arXiv</a>
-        /
-              <a href="https://www.youtube.com/watch?v=KsiZpUFPqIU">video</a>
-              <p></p>
-              <p>We predict a volume from an input stereo pair that can be used to calculate incident lighting at any 3D point within a scene.</p>
-            </td>
-          </tr>  
-
-          <tr onmouseout="nightsight_stop()" onmouseover="nightsight_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='nightsight_image'><img src='images/nightsight_after.jpg'></div>
-                <img src='images/nightsight_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function nightsight_start() {
-                  document.getElementById('nightsight_image').style.opacity = "1";
-                }
-
-                function nightsight_stop() {
-                  document.getElementById('nightsight_image').style.opacity = "0";
-                }
-                nightsight_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1910.11336">
-                <papertitle>Handheld Mobile Photography in Very Low Light</papertitle>
-              </a>
-              <br>
-              <a href="https://sites.google.com/site/orlylibaprofessional/">Orly Liba</a>,
-              <a href="https://scholar.google.com/citations?user=6PhlPWMAAAAJ">Kiran Murthy</a>,
-              <a href="https://ai.google/research/people/105312/">Yun-Ta Tsai</a>,
-              <a href="https://www.timothybrooks.com/">Timothy Brooks</a>,
-              <a href="https://people.csail.mit.edu/tfxue/">Tianfan Xue</a>,
-              <a href="https://scholar.google.com/citations?user=qgc_jY0AAAAJ">Nikhil Karnad</a>,
-              <a href="https://scholar.google.com/citations?user=BxqV_RsAAAAJ">Qiurui He</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="https://ai.google/research/people/105641/">Dillon Sharlet</a>,
-              <a href="http://www.geisswerks.com/">Ryan Geiss</a>,
-              <a href="https://people.csail.mit.edu/hasinoff/">Samuel W. Hasinoff</a>,
-              <a href="https://scholar.google.com/citations?user=2jXxOYQAAAAJ">Yael Pritch</a>,
-              <a href="http://graphics.stanford.edu/~levoy/">Marc Levoy</a>
-              <br>
-              <em>SIGGRAPH Asia</em>, 2019
-              <br>
-              <a href="https://github.com/google/night-sight/tree/master/docs">project page</a>
-              <br>
-              <p></p>
-              <p>By rethinking metering, white balance, and tone mapping, we can take pictures in places too dark for humans to see clearly.</p>
-            </td>
-          </tr>
-          
-          <tr onmouseout="font_stop()" onmouseover="font_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='font_image'><img src='images/font_after.png'></div>
-                <img src='images/font_before.png'>
-              </div>
-              <script type="text/javascript">
-                function font_start() {
-                  document.getElementById('font_image').style.opacity = "1";
-                }
-
-                function font_stop() {
-                  document.getElementById('font_image').style.opacity = "0";
-                }
-                font_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1910.00748">
-                <papertitle>A Deep Factorization of Style and Structure in Fonts</papertitle>
-              </a>
-              <br>
-              <a href="http://www.cs.cmu.edu/~asrivats/">Nikita Srivatsan</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="https://people.eecs.berkeley.edu/~klein/">Dan Klein</a>,
-              <a href="http://cseweb.ucsd.edu/~tberg/">Taylor Berg-Kirkpatrick</a>
-              <br>
-              <em>EMNLP</em>, 2019 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-              <br>
-              <p></p>
-              <p>Variational auto-encoders can be used to disentangle a characters style from its content.</p>
-            </td>
-          </tr>
-          
-          <tr onmouseout="dpzlearn_stop()" onmouseover="dpzlearn_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='dpzlearn_image'><img src='images/dpzlearn_after.jpg'></div>
-                <img src='images/dpzlearn_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function dpzlearn_start() {
-                  document.getElementById('dpzlearn_image').style.opacity = "1";
-                }
-
-                function dpzlearn_stop() {
-                  document.getElementById('dpzlearn_image').style.opacity = "0";
-                }
-                dpzlearn_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1904.05822">
-                <papertitle>Learning Single Camera Depth Estimation using Dual-Pixels</papertitle>
-              </a>
-              <br>
-              <a href="http://rahuldotgarg.appspot.com/">Rahul Garg</a>,
-              <a href="http://nealwadhwa.com">Neal Wadhwa</a>,
-              <a href="">Sameer Ansari,</a>,
-              <strong>Jonathan T. Barron</strong>
-              <br>
-              <em>ICCV</em>, 2019 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-              <br>
-              <a href="https://github.com/google-research/google-research/tree/master/dual_pixels">code</a> /
-              <a href="data/GargICCV2019.bib">bibtex</a>
-              <p></p>
-              <p>Considering the optics of dual-pixel image sensors improves monocular depth estimation techniques.</p>
-            </td>
-          </tr>
-          
-          <tr onmouseout="porlight_stop()" onmouseover="porlight_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='porlight_image'><img src='images/porlight_after.jpg'></div>
-                <img src='images/porlight_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function porlight_start() {
-                  document.getElementById('porlight_image').style.opacity = "1";
-                }
-
-                function porlight_stop() {
-                  document.getElementById('porlight_image').style.opacity = "0";
-                }
-                porlight_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1905.00824">
-                <papertitle>Single Image Portrait Relighting</papertitle>
-              </a>
-              <br>
-              <a href="http://kevinkingo.com/">Tiancheng Sun</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="https://ai.google/research/people/105312/">Yun-Ta Tsai</a>,
-              <a href="https://cseweb.ucsd.edu/~zex014/">Zexiang Xu</a>, Xueming Yu,
-              <a href="http://ict.usc.edu/profile/graham-fyffe/">Graham Fyffe</a>, Christoph Rhemann, Jay Busch,
-              <a href="https://www.pauldebevec.com/">Paul Debevec</a>,
-              <a href="https://cseweb.ucsd.edu/~ravir/">Ravi Ramamoorthi</a>
-              <br>
-              <em>SIGGRAPH</em>, 2019
-              <br>
-              <a href="https://www.youtube.com/watch?v=yxhGWds_g4I">video</a> /
-              <a href="https://petapixel.com/2019/07/16/researchers-developed-an-ai-that-can-relight-portraits-after-the-fact/">press</a> /
-              <a href="data/SunSIGGRAPH2019.bib">bibtex</a>
-              <br>
-              <p></p>
-              <p>Training a neural network on light stage scans and environment maps produces an effective relighting method.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="loss_stop()" onmouseover="loss_start()" bgcolor="#ffffd0">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='loss_image'><img src='images/loss_after.png'></div>
-                <img src='images/loss_before.png'>
-              </div>
-              <script type="text/javascript">
-                function loss_start() {
-                  document.getElementById('loss_image').style.opacity = "1";
-                }
-
-                function loss_stop() {
-                  document.getElementById('loss_image').style.opacity = "0";
-                }
-                loss_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/open?id=1xpZ0fL9h1y9RfcTyPgVkxUrF3VwdkBvq">
-                <papertitle>A General and Adaptive Robust Loss Function</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>
-              <br>
-              <em>CVPR</em>, 2019 &nbsp <font color="red"><strong>(Oral Presentation, Best Paper Award Finalist)</strong></font>
-              <br>
-              <a href="https://arxiv.org/abs/1701.03077">arxiv</a> /
-              <a href="https://drive.google.com/open?id=1HNveL7xSNh6Ss7sxLK8Mw2L1Fc-rRhL4">supplement</a> /
-              <a href="https://youtu.be/BmNKbnF69eY">video</a> /
-              <a href="https://www.youtube.com/watch?v=4IInDT_S0ow&t=37m22s">talk</a> / 
-              <a href="https://drive.google.com/file/d/1GzRYRIfLHvNLT_QwjHoBjHkBbs3Nbf0x/view?usp=sharing">slides</a> / 
-              <a href="https://github.com/google-research/google-research/tree/master/robust_loss">tensorflow code</a> /
-              <a href="https://github.com/jonbarron/robust_loss_pytorch">pytorch code</a> /
-              <a href="data/BarronCVPR2019_reviews.txt">reviews</a> /
-              <a href="data/BarronCVPR2019.bib">bibtex</a>
-              <p></p>
-              <p>A single robust loss function is a superset of many other common robust loss functions, and allows training to automatically adapt the robustness of its own loss.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="mpi_stop()" onmouseover="mpi_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='mpi_image'><img src='images/mpi_after.jpg'></div>
-                <img src='images/mpi_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function mpi_start() {
-                  document.getElementById('mpi_image').style.opacity = "1";
-                }
-
-                function mpi_stop() {
-                  document.getElementById('mpi_image').style.opacity = "0";
-                }
-                mpi_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1TU5L6fnt4Kd49IUOU7aNxor5NIgdHuNG/view?usp=sharing">
-                <papertitle>Pushing the Boundaries of View Extrapolation with Multiplane Images</papertitle>
-              </a>
-              <br>
-              <a href="https://people.eecs.berkeley.edu/~pratul/">Pratul P. Srinivasan</a>, Richard Tucker,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="http://cseweb.ucsd.edu/~ravir/">Ravi Ramamoorthi</a>,
-              <a href="http://graphics.stanford.edu/~renng/">Ren Ng</a>,
-              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>
-              <br>
-              <em>CVPR</em>, 2019 &nbsp <font color="red"><strong>(Oral Presentation, Best Paper Award Finalist)</strong></font>
-              <br>
-              <a href="https://drive.google.com/file/d/1GUW_n-BAn9Q4VntEA_OTHNJiHO7XfC62/view?usp=sharing">supplement</a> /
-              <a href="https://www.youtube.com/watch?v=aJqAaMNL2m4">video</a> /
-              <a href="data/SrinivasanCVPR2019.bib">bibtex</a>
-              <p></p>
-              <p>View extrapolation with multiplane images works better if you reason about disocclusions and disparity sampling frequencies.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="unprocessing_stop()" onmouseover="unprocessing_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='unprocessing_image'><img src='images/unprocessing_after.jpg'></div>
-                <img src='images/unprocessing_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function unprocessing_start() {
-                  document.getElementById('unprocessing_image').style.opacity = "1";
-                }
-
-                function unprocessing_stop() {
-                  document.getElementById('unprocessing_image').style.opacity = "0";
-                }
-                unprocessing_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1H0Wtd--un2JN76dUJN8iC9fWfkA16n8D/view?usp=sharing">
-                <papertitle>Unprocessing Images for Learned Raw Denoising</papertitle>
-              </a>
-              <br>
-              <a href="http://timothybrooks.com/">Tim Brooks</a>,
-              <a href="https://people.eecs.berkeley.edu/~bmild/">Ben Mildenhall</a>,
-              <a href="https://people.csail.mit.edu/tfxue/">Tianfan Xue</a>,
-              <a href="http://people.csail.mit.edu/jiawen/">Jiawen Chen</a>,
-              <a href="http://www.dsharlet.com/">Dillon Sharlet</a>,
-              <strong>Jonathan T. Barron</strong>
-              <br>
-              <em>CVPR</em>, 2019 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-              <br>
-              <a href="https://arxiv.org/abs/1811.11127">arxiv</a> /
-              <a href="http://timothybrooks.com/tech/unprocessing/">project page</a> /
-              <a href="https://github.com/google-research/google-research/tree/master/unprocessing">code</a> / 
-              <a href="data/BrooksCVPR2019.bib">bibtex</a>
-              <p></p>
-              <p>We can learn a better denoising model by processing and unprocessing images the same way a camera does.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="motionblur_stop()" onmouseover="motionblur_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='motionblur_image'><img src='images/motionblur_after.jpg'></div>
-                <img src='images/motionblur_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function motionblur_start() {
-                  document.getElementById('motionblur_image').style.opacity = "1";
-                }
-
-                function motionblur_stop() {
-                  document.getElementById('motionblur_image').style.opacity = "0";
-                }
-                motionblur_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1hWpA4f6iLVcOkZI3zEAAWKARSQhnVgbY/view?usp=sharing">
-                <papertitle>Learning to Synthesize Motion Blur</papertitle>
-              </a>
-              <br>
-              <a href="http://timothybrooks.com/">Tim Brooks</a>,
-              <strong>Jonathan T. Barron</strong>
-              <br>
-              <em>CVPR</em>, 2019 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-              <br>
-              <a href="https://arxiv.org/abs/1811.11745">arxiv</a> /
-              <a href="https://drive.google.com/file/d/1dUQwBMmQdYYIP0zHR_nDQY-uQbaMdcSN/view?usp=sharing">supplement</a> /
-              <a href="http://timothybrooks.com/tech/motion-blur/">project page</a> /
-              <a href="https://www.youtube.com/watch?v=8T1jjSz-2V8">video</a> /
-              <a href="https://github.com/google-research/google-research/tree/master/motion_blur">code</a> / 
-              <a href="data/BrooksBarronCVPR2019.bib">bibtex</a>
-              <p></p>
-              <p>Frame interpolation techniques can be used to train a network that directly synthesizes linear blur kernels.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="darkflash_stop()" onmouseover="darkflash_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='darkflash_image'><img src='images/darkflash_after.png'></div>
-                <img src='images/darkflash_before.png'>
-              </div>
-              <script type="text/javascript">
-                function darkflash_start() {
-                  document.getElementById('darkflash_image').style.opacity = "1";
-                }
-
-                function darkflash_stop() {
-                  document.getElementById('darkflash_image').style.opacity = "0";
-                }
-                darkflash_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1901.01370">
-                <papertitle>Stereoscopic Dark Flash for Low-light Photography</papertitle>
-              </a>
-              <br>
-              <a href="https://www.andrew.cmu.edu/user/jianwan2/">Jian Wang</a>,
-              <a href="https://people.csail.mit.edu/tfxue/">Tianfan Xue</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="http://people.csail.mit.edu/jiawen/">Jiawen Chen</a>
-              <br>
-              <em>ICCP</em>, 2019
-              <br>
-              <p></p>
-              <p>
-                By making one camera in a stereo pair hyperspectral we can multiplex dark flash pairs in space instead of time.
-              </p>
-            </td>
-          </tr>
-
-          <tr onmouseout="motionstereo_stop()" onmouseover="motionstereo_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='motionstereo_image'><img src='images/motionstereo_after.png'></div>
-                <img src='images/motionstereo_before.png'>
-              </div>
-              <script type="text/javascript">
-                function motionstereo_start() {
-                  document.getElementById('motionstereo_image').style.opacity = "1";
-                }
-
-                function motionstereo_stop() {
-                  document.getElementById('motionstereo_image').style.opacity = "0";
-                }
-                motionstereo_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1AABFJ3NgD5DAo5JEpEjWZrcQNzjZnvW9/view?usp=sharing">
-                <papertitle>Depth from Motion for Smartphone AR</papertitle>
-              </a>
-              <br>
-              <a href="https://www.linkedin.com/in/valentinjulien/">Julien Valentin</a>,
-              <a href="https://www.linkedin.com/in/adarshkowdle/">Adarsh Kowdle</a>,
-              <strong>Jonathan T. Barron</strong>, <a href="http://nealwadhwa.com">Neal Wadhwa</a>, and others
-              <br>
-              <em>SIGGRAPH Asia</em>, 2018
-              <br>
-              <a href="data/Valentin2018.bib">bibtex</a>
-              <p></p>
-              <p>Depth cues from camera motion allow for real-time occlusion effects in augmented reality applications.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="portrait_stop()" onmouseover="portrait_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='portrait_image'><img src='images/portrait_after.jpg'></div>
-                <img src='images/portrait_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function portrait_start() {
-                  document.getElementById('portrait_image').style.opacity = "1";
-                }
-
-                function portrait_stop() {
-                  document.getElementById('portrait_image').style.opacity = "0";
-                }
-                portrait_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/13i6DlS9UhGVKmwslLUFnKBwdxFRVQeQj/view?usp=sharing">
-                <papertitle>Synthetic Depth-of-Field with a Single-Camera Mobile Phone</papertitle>
-              </a>
-              <br>
-              <a href="http://nealwadhwa.com">Neal Wadhwa</a>,
-              <a href="http://rahuldotgarg.appspot.com/">Rahul Garg</a>,
-              <a href="http://graphics.stanford.edu/~dejacobs/">David E. Jacobs</a>, Bryan E. Feldman, Nori Kanazawa, Robert Carroll,
-              <a href="http://www.cs.cmu.edu/~ymovshov/">Yair Movshovitz-Attias</a>,
-              <strong>Jonathan T. Barron</strong>, Yael Pritch,
-              <a href="http://graphics.stanford.edu/~levoy/">Marc Levoy</a>
-              <br>
-              <em>SIGGRAPH</em>, 2018
-              <br>
-              <a href="https://arxiv.org/abs/1806.04171">arxiv</a> /
-              <a href="https://ai.googleblog.com/2017/10/portrait-mode-on-pixel-2-and-pixel-2-xl.html">blog post</a> /
-              <a href="data/Wadhwa2018.bib">bibtex</a>
-              <p></p>
-              <p>Dual pixel cameras and semantic segmentation algorithms can be used for shallow depth of field effects.</p>
-              <p>This system is the basis for "Portrait Mode" on the Google Pixel 2 smartphones</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="aperture_stop()" onmouseover="aperture_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='aperture_image'><img src='images/aperture_after.jpg'></div>
-                <img src='images/aperture_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function aperture_start() {
-                  document.getElementById('aperture_image').style.opacity = "1";
-                }
-
-                function aperture_stop() {
-                  document.getElementById('aperture_image').style.opacity = "0";
-                }
-                aperture_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1MpvxcW7OTJP321QL_q4ZLQ8D653bZZzy/view?usp=sharing">
-                <papertitle>Aperture Supervision for Monocular Depth Estimation</papertitle>
-              </a>
-              <br>
-              <a href="https://people.eecs.berkeley.edu/~pratul/">Pratul P. Srinivasan</a>,
-              <a href="http://rahuldotgarg.appspot.com/">Rahul Garg</a>,
-              <a href="http://nealwadhwa.com">Neal Wadhwa</a>,
-              <a href="http://graphics.stanford.edu/~renng/">Ren Ng</a>,
-              <strong>Jonathan T. Barron</strong>
-              <br>
-              <em>CVPR</em>, 2018
-              <br>
-              <a href="https://github.com/google/aperture_supervision">code</a> /
-              <a href="data/Srinivasan2018.bib">bibtex</a>
-              <p></p>
-              <p>Varying a camera's aperture provides a supervisory signal that can teach a neural network to do monocular depth estimation.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="deepburst_stop()" onmouseover="deepburst_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='deepburst_image'><img src='images/deepburst_after.png'></div>
-                <img src='images/deepburst_before.png'>
-              </div>
-              <script type="text/javascript">
-                function deepburst_start() {
-                  document.getElementById('deepburst_image').style.opacity = "1";
-                }
-
-                function deepburst_stop() {
-                  document.getElementById('deepburst_image').style.opacity = "0";
-                }
-                deepburst_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1GAH8ijyZ7GnoBnQFANEzdXinHrE4vvXn/view?usp=sharing">
-                <papertitle>Burst Denoising with Kernel Prediction Networks</papertitle>
-              </a>
-              <br>
-              <a href="https://people.eecs.berkeley.edu/~bmild/">Ben Mildenhall</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="http://people.csail.mit.edu/jiawen/">Jiawen Chen</a>,
-              <a href="http://www.dsharlet.com/">Dillon Sharlet</a>,
-              <a href="http://graphics.stanford.edu/~renng/">Ren Ng</a>, Robert Carroll
-              <br>
-              <em>CVPR</em>, 2018 &nbsp <font color=#FF8080><strong>(Spotlight)</strong></font>
-              <br>
-              <a href="https://drive.google.com/file/d/1aqk3Q-L2spjLZh2yRWKUWIDcZkGjQ7US/view?usp=sharing">supplement</a> /
-              <a href="https://github.com/google/burst-denoising">code</a> /
-              <a href="data/Mildenhall2018.bib">bibtex</a>
-              <p></p>
-              <p>We train a network to predict linear kernels that denoise noisy bursts from cellphone cameras.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="friendly_stop()" onmouseover="friendly_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='friendly_image'><img src='images/friendly_after.png'></div>
-                <img src='images/friendly_before.png'>
-              </div>
-              <script type="text/javascript">
-                function friendly_start() {
-                  document.getElementById('friendly_image').style.opacity = "1";
-                }
-
-                function friendly_stop() {
-                  document.getElementById('friendly_image').style.opacity = "0";
-                }
-                friendly_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1w_0djhL0QgC_fbehnJ0c-J23_kW_420p/view?usp=sharing">
-                <papertitle>A Hardware-Friendly Bilateral Solver for Real-Time Virtual Reality Video</papertitle>
-              </a>
-              <br>
-              <a href="https://homes.cs.washington.edu/~amrita/">Amrita Mazumdar</a>, <a href="http://homes.cs.washington.edu/~armin/">Armin Alaghi</a>, <strong>Jonathan T. Barron</strong>, <a href="https://www.cs.unc.edu/~gallup/">David Gallup</a>, <a href="https://homes.cs.washington.edu/~luisceze/">Luis Ceze</a>, <a href="https://homes.cs.washington.edu/~oskin/">Mark Oskin</a>, <a href="http://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a>
-              <br>
-              <em>High-Performance Graphics (HPG)</em>, 2017
-              <br>
-              <a href="https://sampa.cs.washington.edu/projects/vr-hw.html">project page</a>
-              <p></p>
-              <p>A reformulation of the bilateral solver can be implemented efficiently on GPUs and FPGAs.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="hdrnet_stop()" onmouseover="hdrnet_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='hdrnet_image'><img src='images/hdrnet_after.jpg'></div>
-                <img src='images/hdrnet_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function hdrnet_start() {
-                  document.getElementById('hdrnet_image').style.opacity = "1";
-                }
-
-                function hdrnet_stop() {
-                  document.getElementById('hdrnet_image').style.opacity = "0";
-                }
-                hdrnet_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1jQY3CTMnLX7PeGUzYLso9H1eCsZyWbwg/view?usp=sharing">
-                <papertitle>Deep Bilateral Learning for Real-Time Image Enhancement</papertitle>
-              </a>
-              <br>
-              <a href="http://www.mgharbi.com">Micha&euml;l Gharbi</a>, <a href="http://people.csail.mit.edu/jiawen/">Jiawen Chen</a>, <strong>Jonathan T. Barron</strong>, <a href="https://people.csail.mit.edu/hasinoff/">Samuel W. Hasinoff</a>, <a href="http://people.csail.mit.edu/fredo/">Fr&eacute;do Durand </a>
-              <br>
-              <em>SIGGRAPH</em>, 2017
-              <br>
-              <a href="https://groups.csail.mit.edu/graphics/hdrnet/">project page</a> /
-              <a href="https://www.youtube.com/watch?v=GAe0qKKQY_I">video</a> /
-              <a href="data/GharbiSIGGRAPH2017.bib">bibtex</a> /
-              <a href="http://news.mit.edu/2017/automatic-image-retouching-phone-0802">p</a><a href="https://www.wired.com/story/googles-new-algorithm-perfects-photos-before-you-even-take-them/">r</a><a href="https://petapixel.com/2017/08/02/new-ai-can-retouch-photos-snap/">e</a><a href="https://www.theverge.com/2017/8/2/16082272/google-mit-retouch-photos-machine-learning">s</a><a href="http://gizmodo.com/clever-camera-app-uses-deep-learning-to-perfectly-retou-1797474282">s</a>
-              <p></p>
-              <p>By training a deep network in bilateral space we can learn a model for high-resolution and real-time image enhancement.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="ffcc_stop()" onmouseover="ffcc_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='ffcc_image'><img src='images/ffcc_after.jpg'></div>
-                <img src='images/ffcc_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function ffcc_start() {
-                  document.getElementById('ffcc_image').style.opacity = "1";
-                }
-
-                function ffcc_stop() {
-                  document.getElementById('ffcc_image').style.opacity = "0";
-                }
-                ffcc_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1VDWAS7HgiufTNPP7CQY00KmJP71QIZAy/view?usp=sharing">
-                <papertitle>Fast Fourier Color Constancy</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>,
-              <a href="https://ai.google/research/people/105312/">Yun-Ta Tsai</a>,
-              <br>
-              <em>CVPR</em>, 2017
-              <br>
-              <a href="https://drive.google.com/file/d/1b5zdR5UYPTkXa2UgiLhi-PP89bzINJSR/view?usp=sharing">supplement</a> /
-              <a href="https://youtu.be/rZCXSfl13rY">video</a> /
-              <a href="data/BarronTsaiCVPR2017.bib">bibtex</a> /
-              <a href="https://github.com/google/ffcc">code</a> /
-              <a href="https://drive.google.com/open?id=0B4nuwEMaEsnmWkJQMlFPSFNzbEk">output</a> /
-              <a href="https://blog.google/products/photos/six-tips-make-your-photos-pop/">blog post</a> /
-              <a href="https://9to5google.com/2017/03/03/google-photos-auto-white-balance/">p</a><a href="https://www.engadget.com/2017/03/03/google-photos-automatically-fixes-your-pictures-white-balance/">r</a><a href="https://lifehacker.com/google-photos-will-now-automatically-adjust-the-white-b-1793009155">e</a><a href="https://petapixel.com/2017/03/06/google-photos-will-now-automatically-white-balance-snapshots/">s</a><a href="http://www.theverge.com/2017/3/3/14800062/google-photos-auto-white-balance-android">s</a>
-              <p></p>
-              <p>Color space can be aliased, allowing white balance models to be learned and evaluated in the frequency domain. This improves accuracy by 13-20% and speed by 250-3000x.</p>
-              <p>This technology is used by <a href="https://store.google.com/product/pixel_compare">Google Pixel</a>, <a href="https://photos.google.com/">Google Photos</a>, and <a href="https://www.google.com/maps">Google Maps</a>.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="jump_stop()" onmouseover="jump_start()" bgcolor="#ffffd0">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='jump_image'><img src='images/jump_anim.gif'></div>
-                <img src='images/jump_still.png'>
-              </div>
-              <script type="text/javascript">
-                function jump_start() {
-                  document.getElementById('jump_image').style.opacity = "1";
-                }
-
-                function jump_stop() {
-                  document.getElementById('jump_image').style.opacity = "0";
-                }
-                jump_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1RBnTrtzqmuO8uj3GQaR5vBJZjIC3Jxjn/view?usp=sharing">
-                <papertitle>Jump: Virtual Reality Video</papertitle>
-              </a>
-              <br>
-              <a href="http://mi.eng.cam.ac.uk/~ra312/">Robert Anderson</a>, <a href="https://www.cs.unc.edu/~gallup/">David Gallup</a>, <strong>Jonathan T. Barron</strong>, <a href="https://mediatech.aalto.fi/~janne/index.php">Janne Kontkanen</a>, <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>, <a href="http://carlos-hernandez.org/">Carlos Hern&aacutendez</a>, <a href="https://homes.cs.washington.edu/~sagarwal/">Sameer Agarwal</a>, <a href="https://homes.cs.washington.edu/~seitz/">Steven M Seitz</a>
-              <br>
-              <em>SIGGRAPH Asia</em>, 2016
-              <br>
-              <a href="https://drive.google.com/file/d/11D4eCDXqqFTtZT0WS2COJE0hsAN3QEww/view?usp=sharing">supplement</a> /
-              <a href="https://www.youtube.com/watch?v=O0qUYynupTI">video</a> /
-              <a href="data/Anderson2016.bib">bibtex</a> /
-              <a href="https://blog.google/products/google-vr/jump-using-omnidirectional-stereo-vr-video/">blog post</a>
-              <p></p>
-              <p>Using computer vision and a ring of cameras, we can make video for virtual reality headsets that is both stereo and 360&deg;.</p>
-              <p>This technology is used by <a href="https://vr.google.com/jump/">Jump</a>. </p>
-            </td>
-          </tr>
-
-          <tr onmouseout="hdrp_stop()" onmouseover="hdrp_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='hdrp_image'><img src='images/hdrp_after.jpg'></div>
-                <img src='images/hdrp_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function hdrp_start() {
-                  document.getElementById('hdrp_image').style.opacity = "1";
-                }
-
-                function hdrp_stop() {
-                  document.getElementById('hdrp_image').style.opacity = "0";
-                }
-                hdrp_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1SSSmVHWbMQ7sZMOredSVWVJXbXobkyzA/view?usp=sharing">
-                <papertitle>Burst Photography for High Dynamic Range and Low-Light Imaging on Mobile Cameras</papertitle>
-              </a>
-              <br>
-              <a href="http://people.csail.mit.edu/hasinoff/">Samuel W. Hasinoff</a>, <a href="http://www.dsharlet.com/">Dillon Sharlet</a>, <a href="http://www.geisswerks.com/">Ryan Geiss</a>, <a href="http://people.csail.mit.edu/abadams/">Andrew Adams</a>, <strong>Jonathan T. Barron</strong>, Florian Kainz, <a href="http://people.csail.mit.edu/jiawen/">Jiawen Chen</a>, <a href="http://graphics.stanford.edu/~levoy/">Marc Levoy</a>
-              <br>
-              <em>SIGGRAPH Asia</em>, 2016
-              <br>
-              <a href="http://hdrplusdata.org/">project page</a> /
-              <a href="https://drive.google.com/open?id=15EUuSDi1BtHUgQCaiooVrD44qYKIC3vx">supplement</a> /
-              <a href="data/Hasinoff2016.bib">bibtex</a>
-              <p></p>
-              <p>Mobile phones can take beautiful photographs in low-light or high dynamic range environments by aligning and merging a burst of images.</p>
-              <p>This technology is used by the <a href="https://research.googleblog.com/2014/10/hdr-low-light-and-high-dynamic-range.html">Nexus HDR+</a> feature.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="bs_stop()" onmouseover="bs_start()" bgcolor="#ffffd0">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='bs_image'><img src='images/BS_after.jpg'></div>
-                <img src='images/BS_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function bs_start() {
-                  document.getElementById('bs_image').style.opacity = "1";
-                }
-
-                function bs_stop() {
-                  document.getElementById('bs_image').style.opacity = "0";
-                }
-                bs_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1zFzCaFwkGK1EGmJ_KEqb-ZsRJhfUKN2S/view?usp=sharing">
-                <papertitle>The Fast Bilateral Solver</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>,
-              <a href="https://cs.stanford.edu/~poole/">Ben Poole</a>
-              <br>
-              <em>ECCV</em>, 2016 &nbsp <font color="red"><strong>(Best Paper Honorable Mention)</strong></font>
-              <br>
-              <a href="http://arxiv.org/abs/1511.03296">arXiv</a> /
-              <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmdEREcjhlSXM2NGs/view?usp=sharing">supplement</a> /
-              <a href="data/BarronPooleECCV2016.bib">bibtex</a> /
-              <a href="http://videolectures.net/eccv2016_barron_bilateral_solver/">video (they messed up my slides, use &rarr;)</a> /
-              <a href="https://drive.google.com/file/d/19x1AeN0PFus6Pjrd8nR-vCmJ6bNEefsC/view?usp=sharing">keynote</a> (or <a href="https://drive.google.com/file/d/1p9nduiymK9jUh7WfwlsMjBfW8RoNe_61/view?usp=sharing">PDF</a>) /
-              <a href="https://github.com/poolio/bilateral_solver">code</a> /
-              <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmaDI3bm5VeDRxams/view?usp=sharing">depth super-res results</a> /
-              <a href="data/BarronPooleECCV2016_reviews.txt">reviews</a>
-              <p></p>
-              <p>Our solver smooths things better than other filters and faster than other optimization algorithms, and you can backprop through it.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="diverdi_stop()" onmouseover="diverdi_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='diverdi_image'><img src='images/diverdi_after.jpg'></div>
-                <img src='images/diverdi_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function diverdi_start() {
-                  document.getElementById('diverdi_image').style.opacity = "1";
-                }
-
-                function diverdi_stop() {
-                  document.getElementById('diverdi_image').style.opacity = "0";
-                }
-                diverdi_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1mmT-LuK_eBZsl3qp4-fAshEPdgfbgvNE/view?usp=sharing">
-                <papertitle>Geometric Calibration for Mobile, Stereo, Autofocus Cameras</papertitle>
-              </a>
-              <br>
-              <a href="http://www.stephendiverdi.com/">Stephen DiVerdi</a>,
-              <strong>Jonathan T. Barron</strong>
-              <br>
-              <em>WACV</em>, 2016
-              <br>
-              <a href="data/Diverdi2016.bib">bibtex</a>
-              <p></p>
-              <p>Standard techniques for stereo calibration don't work for cheap mobile cameras.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="dt_stop()" onmouseover="dt_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='dt_image'><img src='images/DT_edge.jpg'></div>
-                <img src='images/DT_image.jpg'>
-              </div>
-              <script type="text/javascript">
-                function dt_start() {
-                  document.getElementById('dt_image').style.opacity = "1";
-                }
-
-                function dt_stop() {
-                  document.getElementById('dt_image').style.opacity = "0";
-                }
-                dt_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/178Xj2PZ1w6hZJpucU-TiZOoCemJmvsVQ/view?usp=sharing">
-                <papertitle>Semantic Image Segmentation with Task-Specific Edge Detection Using CNNs and a Discriminatively Trained Domain Transform</papertitle>
-              </a>
-              <br>
-              <em>CVPR</em>, 2016
-              <br>
-              <a href="http://liangchiehchen.com/">Liang-Chieh Chen</a>, <strong>Jonathan T. Barron</strong>, <a href="http://ttic.uchicago.edu/~gpapan/">George Papandreou</a>, <a href="http://www.cs.ubc.ca/~murphyk/">Kevin Murphy</a>, <a href="http://www.stat.ucla.edu/~yuille/">Alan L. Yuille</a>
-              <br>
-              <a href="data/Chen2016.bib">bibtex</a> /
-              <a href="http://liangchiehchen.com/projects/DeepLab.html">project page</a> /
-              <a href="https://bitbucket.org/aquariusjay/deeplab-public-ver2">code</a>
-              <p></p>
-              <p>By integrating an edge-aware filter into a convolutional neural network we can learn an edge-detector while improving semantic segmentation.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="ccc_stop()" onmouseover="ccc_start()" bgcolor="#ffffd0">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='ccc_image'><img src='images/ccc_after.jpg'></div>
-                <img src='images/ccc_before.jpg'>
-              </div>
-              <script type="text/javascript">
-                function ccc_start() {
-                  document.getElementById('ccc_image').style.opacity = "1";
-                }
-
-                function ccc_stop() {
-                  document.getElementById('ccc_image').style.opacity = "0";
-                }
-                ccc_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1id74VNDL8ACrrWf6vYgN2M4kS8gd4n7w/view?usp=sharing">
-                <papertitle>Convolutional Color Constancy</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>
-              <br>
-              <em>ICCV</em>, 2015
-              <br>
-              <a href="https://drive.google.com/file/d/1vO3sVOMihmpNqsuASeR46Y_iME0lOANR/view?usp=sharing">supplement</a> / <a href="data/BarronICCV2015.bib">bibtex</a> / <a href="https://youtu.be/saHwKY9rfx0">video</a> (or <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmalBNUzlENUJSVDg/view?usp=sharing">mp4</a>)
-              <p></p>
-              <p>By framing white balance as a chroma localization task we can discriminatively learn a color constancy model that beats the state-of-the-art by 40%.</p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src='images/Shelhamer2015.jpg'>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1stygV71uBruD7Ck9CaAQr7nREvr3DtUL/view?usp=sharing">
-                <papertitle>Scene Intrinsics and Depth from a Single Image</papertitle>
-              </a>
-              <br>
-              <a href="http://imaginarynumber.net/">Evan Shelhamer</a>, <strong>Jonathan T. Barron</strong>, <a href="http://www.eecs.berkeley.edu/%7Etrevor/">Trevor Darrell</a>
-              <br>
-              <em>ICCV Workshop</em>, 2015
-              <br>
-              <a href="data/Shelhamer2015.bib">bibtex</a>
-              <p></p>
-              <p>The monocular depth estimates produced by fully convolutional networks can be used to inform intrinsic image estimation.</p>
-            </td>
-          </tr>
-
-          <tr bgcolor="#ffffd0" onmouseout="defocus_stop()" onmouseover="defocus_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div id='lens_blurry' class='hidden'><img src="images/BarronCVPR2015_anim.gif"></div>
-              <div id='lens_sharp'>
-                <a href="images/BarronCVPR2015_anim.gif"><img src="images/BarronCVPR2015_still.jpg"></a>
-              </div>
-              <script type="text/javascript">
-                function defocus_start() {
-                  document.getElementById('lens_blurry').style.display = 'inline';
-                  document.getElementById('lens_sharp').style.display = 'none';
-                }
-
-                function defocus_stop() {
-                  document.getElementById('lens_blurry').style.display = 'none';
-                  document.getElementById('lens_sharp').style.display = 'inline';
-                }
-                defocus_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://drive.google.com/file/d/1R4RdaBZIs-uJobhIFs9yKf3jIsaHQNH0/view?usp=sharing">
-                <papertitle>Fast Bilateral-Space Stereo for Synthetic Defocus</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>, <a href="http://people.csail.mit.edu/abadams/">Andrew Adams</a>, <a href="http://people.csail.mit.edu/yichangshih/">YiChang Shih</a>, <a href="http://carlos-hernandez.org/">Carlos Hern&aacutendez</a>
-              <br>
-              <em>CVPR</em>, 2015 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-              <br>
-              <a href="https://drive.google.com/file/d/125qgMdqeT1vojMIijIKcOF099LjUgUOL/view?usp=sharing">abstract</a> /
-              <a href="https://drive.google.com/file/d/1HGGvVOGxmPjvgdK5q3UD1Qb5Nttg6kq9/view?usp=sharing">supplement</a> /
-              <a href="data/BarronCVPR2015.bib">bibtex</a> /
-              <a href="http://techtalks.tv/talks/fast-bilateral-space-stereo-for-synthetic-defocus/61624/">talk</a> /
-              <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmSzZZdUJSMllSUkE/view?usp=sharing">keynote</a> (or <a href="https://drive.google.com/open?id=0B4nuwEMaEsnmZ1ZXUzBCWDJYeFU">PDF</a>)
-              <p></p>
-              <p>By embedding a stereo optimization problem in "bilateral-space" we can very quickly solve for an edge-aware depth map, letting us render beautiful depth-of-field effects.</p>
-              <p>This technology is used by the <a href="http://googleresearch.blogspot.com/2014/04/lens-blur-in-new-google-camera-app.html">Google Camera "Lens Blur"</a> feature. </p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="images/PABMM2015.jpg" alt="PontTuset" width="160" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://arxiv.org/abs/1503.00848" id="MCG_journal">
-                <papertitle>Multiscale Combinatorial Grouping for Image Segmentation and Object Proposal Generation</papertitle>
-              </a>
-              <br>
-              <a href="http://imatge.upc.edu/web/people/jordi-pont-tuset">Jordi Pont-Tuset</a>, <a href="http://www.cs.berkeley.edu/~arbelaez/">Pablo Arbel&aacuteez</a>, <strong>Jonathan T. Barron</strong>, <a href="http://imatge.upc.edu/web/ferran">Ferran Marqu&eacutes</a>, <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>
-              <br>
-              <em>TPAMI</em>, 2017
-              <br>
-              <a href="http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/mcg/">project page</a> /
-              <a href="data/PontTusetTPAMI2017.bib">bibtex</a> /
-              <a href="https://drive.google.com/file/d/1AiB78Fy7QVA3KqgcooyzMAC5L8HhNzjz/view?usp=sharing">fast eigenvector code</a>
-              <p></p>
-              <p>We produce state-of-the-art contours, regions and object candidates, and we compute normalized-cuts eigenvectors 20&times faster.</p>
-              <p>This paper subsumes our CVPR 2014 paper.</p>
-            </td>
-          </tr>
-
-          <tr bgcolor="#ffffd0" onmouseout="sirfs_stop()" onmouseover="sirfs_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <div class="two" id='sirfs_image'>
-                  <a href="images/Estee.png"><img src='images/Estee_160.png' style="border-style: none"></a>
-                </div>
-                <a href="images/Estee.png"><img src='images/Estee_160_prodB2.png' style="border-style: none"></a>
-              </div>
-              <script type="text/javascript">
-                function sirfs_start() {
-                  document.getElementById('sirfs_image').style.opacity = "1";
-                }
-
-                function sirfs_stop() {
-                  document.getElementById('sirfs_image').style.opacity = "0";
-                }
-                sirfs_stop()
-              </script>
-            </td>
-            <td width="75%" valign="middle">
-              <p>
-                <a href="https://drive.google.com/file/d/1RvyCiDMg--jyO8lLBvopp0o271LvREoa/view?usp=sharing" id="SIRFS">
-                  <papertitle>Shape, Illumination, and Reflectance from Shading</papertitle>
-                </a>
-                <br>
-                <strong>Jonathan T. Barron</strong>, <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>
-                <br>
-                <em>TPAMI</em>, 2015
-                <br>
-                <a href="https://drive.google.com/file/d/1D3k6u4Ek2dWm2Yf7kl1Vu_g1HFSxztqF/view?usp=sharing">supplement</a> / <a href="data/BarronMalikTPAMI2015.bib">bibtex</a> / <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmVWpfa19mbUxIYW8/view?usp=sharing">keynote</a> (or <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmazJvLXJUb0NuM1U/view?usp=sharing">powerpoint</a>, <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmTDBUWE96VHJndjg/view?usp=sharing">PDF</a>) / <a href="http://www.youtube.com/watch?v=NnePYprvFvA">video</a> / <a href="https://drive.google.com/file/d/1vg9Rb-kBntSTnTCzVgFlskkPXvTB_5aq/view?usp=sharing">code &amp; data</a> / <a href="https://drive.google.com/file/d/11X5Zfjy7Q7oP_V2rtqy2f5-x9YgQUAFd/view?usp=sharing">kudos</a>
-              </p>
-              <p>
-                We present <strong>SIRFS</strong>, which can estimate shape, chromatic illumination, reflectance, and shading from a single image of an masked object.
-              </p>
-              <p>
-                This paper subsumes our CVPR 2011, CVPR 2012, and ECCV 2012 papers.
-              </p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="images/ArbalaezCVPR2014.jpg" alt="ArbalaezCVPR2014" width="160" height="120" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/1M0wijHY134F9ETBgO8mjeuKUSblTRLG0/view?usp=sharing">
-                <papertitle>Multiscale Combinatorial Grouping</papertitle>
-              </a>
-              <br>
-              <a href="http://www.cs.berkeley.edu/~arbelaez/">Pablo Arbel&aacuteez</a>, <a href="http://imatge.upc.edu/web/people/jordi-pont-tuset">Jordi Pont-Tuset</a>, <strong>Jonathan T. Barron</strong>, <a href="http://imatge.upc.edu/web/ferran">Ferran Marqu&eacutes</a>, <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>
-              <br>
-              <em>CVPR</em>, 2014
-              <br>
-              <a href="http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/mcg/">project page</a> /
-              <a href="data/ArbelaezCVPR2014.bib">bibtex</a>
-              <p>This paper is subsumed by <a href="#MCG_journal">our journal paper</a>.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="flyspin_stop()" onmouseover="flyspin_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div id='flyspin' class='hidden'><img src="images/BarronICCV2013_160.gif"></div>
-              <div id='flystill'>
-                <a href="images/BarronICCV2013.gif"><img src="images/BarronICCV2013_160.jpg"></a>
-              </div>
-              <script type="text/javascript">
-                function flyspin_start() {
-                  document.getElementById('flyspin').style.display = 'inline';
-                  document.getElementById('flystill').style.display = 'none';
-                }
-
-                function flyspin_stop() {
-                  document.getElementById('flyspin').style.display = 'none';
-                  document.getElementById('flystill').style.display = 'inline';
-                }
-                flyspin_stop()
-              </script>
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/1shvItvx_8Sb8QNXhrOXkuRmx2618iwNJ/view?usp=sharing">
-                <papertitle>Volumetric Semantic Segmentation using Pyramid Context Features</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>, <a href="http://www.cs.berkeley.edu/~arbelaez/">Pablo Arbel&aacuteez</a>, <a href="http://big.lbl.gov/">Soile V. E. Ker&aumlnen</a>, <a href="http://www.lbl.gov/gsd/biggin.html">Mark D. Biggin</a>,
-              <br> <a href="http://dwknowles.lbl.gov/">David W. Knowles</a>, <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>
-              <br>
-              <em>ICCV</em>, 2013
-              <br>
-              <a href="https://drive.google.com/file/d/1htiLpMAcYLtuBthmAb4XHnOYxUbkfnqR/view?usp=sharing">supplement</a> /
-              <a href="https://drive.google.com/file/d/1qoYeFNa443myn2SfcdhmCsYBqE9xQrPD/view?usp=sharing">poster</a> /
-              <a href="data/BarronICCV2013.bib">bibtex</a> / <a href="http://www.youtube.com/watch?v=Y56-FcfnlVA&hd=1">video 1</a> (or <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmZ1ZLaHdQYzAxNlU/view?usp=sharing">mp4</a>) / <a href="http://www.youtube.com/watch?v=mvRoYuP6-l4&hd=1">video 2</a> (or <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmZ1ZLaHdQYzAxNlU/view?usp=sharing">mp4</a>) / <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmSF9YdWJjQmh4QW8/view?usp=sharing">code &amp; data</a>
-              <p>
-                We present a technique for efficient per-voxel linear classification, which enables accurate and fast semantic segmentation of volumetric Drosophila imagery.
-              </p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="images/3DSP_160.jpg" alt="3DSP" width="160" height="120" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmbG1tOGIta3N1Wjg/view?usp=sharing" id="3DSP">
-                <papertitle>3D Self-Portraits</papertitle>
-              </a>
-              <br>
-              <a href="http://www.hao-li.com/">Hao Li</a>, <a href="http://www.evouga.com/">Etienne Vouga</a>, Anton Gudym, <a href="http://www.cs.princeton.edu/~linjiel/">Linjie Luo</a>, <strong>Jonathan T. Barron</strong>, Gleb Gusev
-              <br>
-              <em>SIGGRAPH Asia</em>, 2013
-              <br>
-              <a href="http://www.youtube.com/watch?v=DmUkbZ0QMCA">video</a> / <a href="http://shapify.me/">shapify.me</a> / <a href="data/3DSP_siggraphAsia2013.bib">bibtex</a>
-              <p>Our system allows users to create textured 3D models of themselves in arbitrary poses using only a single 3D sensor.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="rgbd_stop()" onmouseover="rgbd_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div id='rgbd_anim' class='hidden'><img src="images/SceneSIRFS.gif"></div>
-              <div id='rgbd_still'><img src="images/SceneSIRFS-still.jpg"></div>
-              <script type="text/javascript">
-                function rgbd_start() {
-                  document.getElementById('rgbd_anim').style.display = 'inline';
-                  document.getElementById('rgbd_still').style.display = 'none';
-                }
-
-                function rgbd_stop() {
-                  document.getElementById('rgbd_anim').style.display = 'none';
-                  document.getElementById('rgbd_still').style.display = 'inline';
-                }
-                rgbd_stop()
-              </script>
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/1snypSLhzC0jXCchJRsWpcDZ7Es5hDmXo/view?usp=sharing">
-                <papertitle>Intrinsic Scene Properties from a Single RGB-D Image</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>, <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>
-              <br>
-              <em>CVPR</em>, 2013 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-              <br>
-              <a href="https://drive.google.com/file/d/1cLUw72WpgdZ_3TQAjJABdgywqjBfn_Mq/view?usp=sharing">supplement</a> / <a href="data/BarronMalikCVPR2013.bib">bibtex</a> / <a href="http://techtalks.tv/talks/intrinsic-scene-properties-from-a-single-rgb-d-image/58614/">talk</a> / <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmWW1CZGJPbi12R0k/view?usp=sharing">keynote</a> (or <a href="https://drive.google.com/file/d/19q3EFf6GIb4UFcCN2DVU2jVKpxRj5kxf/view?usp=sharing">powerpoint</a>, <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmMzQ4ZVp1SWdnVkk/view?usp=sharing">PDF</a>) / <a href="https://drive.google.com/open?id=1ZbPScVA6Efqd-ESvojl92sw8K-82Xxry">code &amp; data</a>
-              <p>By embedding mixtures of shapes &amp; lights into a soft segmentation of an image, and by leveraging the output of the Kinect, we can extend SIRFS to scenes.
-                <br>
-                <br>TPAMI Journal version: <a href="https://drive.google.com/file/d/1iQiUxZvjPPnb8rFCwXYesTgFSRk7mkAq/view?usp=sharing">version</a> / <a href="data/BarronMalikTPAMI2015B.bib">bibtex</a>
-              </p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="images/Boundary.jpg" alt="Boundary_png" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/1H4YPovfrvcce3HGMEhidwU2l2fTcNR5y/view?usp=sharing">
-                <papertitle>Boundary Cues for 3D Object Shape Recovery</papertitle>
-              </a>
-              <br>
-              <a href="http://www.kevinkarsch.com/">Kevin Karsch</a>,
-              <a href="http://web.engr.illinois.edu/~liao17/">Zicheng Liao</a>,
-              <a href="http://web.engr.illinois.edu/~jjrock2/">Jason Rock</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="http://www.cs.illinois.edu/homes/dhoiem/">Derek Hoiem</a>
-              <br>
-              <em>CVPR</em>, 2013
-              <br>
-              <a href="https://drive.google.com/file/d/0B4nuwEMaEsnmLUQ5SVJTcUZIYXc/view?usp=sharing">supplement</a> / <a href="data/KarschCVPR2013.bib">bibtex</a>
-              <p>Boundary cues (like occlusions and folds) can be used for shape reconstruction, which improves object recognition for humans and computers.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="eccv12_stop()" onmouseover="eccv12_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div id='eccv12_anim' class='hidden'>
-                <a href="https://drive.google.com/file/d/1brxb58CfRPe7KEER4Q_fYS9B_J-hiS0t/view?usp=sharing"><img src="images/ECCV2012_small.gif"></a>
-              </div>
-              <div id='eccv12_still'><img src="images/ECCV2012_still.jpg"></div>
-              <script type="text/javascript">
-                function eccv12_start() {
-                  document.getElementById('eccv12_anim').style.display = 'inline';
-                  document.getElementById('eccv12_still').style.display = 'none';
-                }
-
-                function eccv12_stop() {
-                  document.getElementById('eccv12_anim').style.display = 'none';
-                  document.getElementById('eccv12_still').style.display = 'inline';
-                }
-                eccv12_stop()
-              </script>
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/1NczR4pJ-s0YBjCe0rCevMt8IM5JPuUrc/view?usp=sharing">
-                <papertitle>Color Constancy, Intrinsic Images, and Shape Estimation</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>, <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>
-              <br>
-              <em>ECCV</em>, 2012
-              <br>
-              <a href="https://drive.google.com/file/d/1zuxhWZ3i6THvuRRBeE7dM_BJfDxO72Fq/view?usp=sharing">supplement</a> /
-              <a href="data/BarronMalikECCV2012.bib">bibtex</a> /
-              <a href="https://drive.google.com/file/d/12x8mhqpFsA6p0u6ZQW-ieRKF8hlQBKKe/view?usp=sharing">poster</a> /
-              <a href="http://www.youtube.com/watch?v=NnePYprvFvA">video</a>
-              <p>This paper is subsumed by <a href="#SIRFS">SIRFS</a>.</p>
-            </td>
-          </tr>
-
-          <tr onmouseout="cvpr12_stop()" onmouseover="cvpr12_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one" style="height: 120px">
-                <div class="two" id='cvpr12_image' style="height: 120px">
-                  <img src='images/BarronCVPR2012_after.jpg' style="border-style: none">
-                </div>
-                <img src='images/BarronCVPR2012_before.jpg' style="border-style: none">
-              </div>
-              <script type="text/javascript">
-                function cvpr12_start() {
-                  document.getElementById('cvpr12_image').style.opacity = "1";
-                }
-
-                function cvpr12_stop() {
-                  document.getElementById('cvpr12_image').style.opacity = "0";
-                }
-                cvpr12_stop()
-              </script>
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/17RfINbE2dr2EjXp9MtGO0MHJLQmQVhvT/view?usp=sharing">
-                <papertitle>Shape, Albedo, and Illumination from a Single Image of an Unknown Object</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>, <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>
-              <br>
-              <em>CVPR</em>, 2012
-              <br>
-              <a href="https://drive.google.com/file/d/1Im_bUI42AP9VPoNtsjLajvtLRiwv39k3/view?usp=sharing">supplement</a> /
-              <a href="data/BarronMalikCVPR2012.bib">bibtex</a> /
-              <a href="https://drive.google.com/file/d/1IAlSF4k3_CEL9dfbaMiNTFPBoEkLhsRl/view?usp=sharing">poster</a>
-              <p>This paper is subsumed by <a href="#SIRFS">SIRFS</a>.</p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="images/B3DO.jpg" alt="b3do" width="160" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/1_S8EQyngbHQrB415o0XkQ4V9SMzdEgWT/view?usp=sharing">
-                <papertitle>A Category-Level 3-D Object Dataset: Putting the Kinect to Work</papertitle>
-              </a>
-              <br>
-              <a href="http://www.eecs.berkeley.edu/%7Eallie/">Allison Janoch</a>,
-              <a href="http://sergeykarayev.com/">Sergey Karayev</a>,
-              <a href="http://www.eecs.berkeley.edu/%7Ejiayq/">Yangqing Jia</a>,
-              <strong>Jonathan T. Barron</strong>,
-              <a href="http://www.cs.berkeley.edu/%7Emfritz/">Mario Fritz</a>,
-              <a href="http://www.icsi.berkeley.edu/%7Esaenko/">Kate Saenko</a>,
-              <a href="http://www.eecs.berkeley.edu/%7Etrevor/">Trevor Darrell</a>
-              <br>
-              <em>ICCV 3DRR Workshop</em>, 2011
-              <br>
-              <a href="data/B3DO_ICCV_2011.bib">bibtex</a> /
-              <a href="https://drive.google.com/file/d/1qf4-U5RhSw12O7gzQwW66SMQhs2FWYDW/view?usp=sharing">"smoothing" code</a>
-              <p>We present a large RGB-D dataset of indoor scenes and investigate ways to improve object detection using depth information.</p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="images/safs.jpg" alt="safs_small" width="160" height="160" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/1EZTOO5xezLYcyIFgAzs4KuZFLbTcwTDH/view?usp=sharing">
-                <papertitle>High-Frequency Shape and Albedo from Shading using Natural Image Statistics</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>, <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>
-              <br>
-              <em>CVPR</em>, 2011
-              <br>
-              <a href="data/BarronMalikCVPR2011.bib">bibtex</a>
-              <p>This paper is subsumed by <a href="#SIRFS">SIRFS</a>.</p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="images/fast_texture.jpg" alt="fast-texture" width="160" height="160">
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/1rc05NatkQVmUDlGCAYcHSrvAzTpU9knT/view?usp=sharing">
-                <papertitle>Discovering Efficiency in Coarse-To-Fine Texture Classification</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>, <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>
-              <br>
-              <em>Technical Report</em>, 2010
-              <br>
-              <a href="data/BarronTR2010.bib">bibtex</a>
-              <p>A model and feature representation that allows for sub-linear coarse-to-fine semantic segmentation.
-              </p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="images/prl.jpg" alt="prl" width="160" height="160">
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/13rVuJpcytRdLYCnKpq46g7B7IzSrPQ2P/view?usp=sharing">
-                <papertitle>Parallelizing Reinforcement Learning</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>, <a href="http://www.eecs.berkeley.edu/~dsg/">Dave Golland</a>, <a href="http://www.cs.berkeley.edu/~nickjhay/">Nicholas J. Hay</a>
-              <br>
-              <em>Technical Report</em>, 2009
-              <br>
-              <a href="data/BarronPRL2009.bib">bibtex</a>
-              <p>Markov Decision Problems which lie in a low-dimensional latent space can be decomposed, allowing modified RL algorithms to run orders of magnitude faster in parallel.</p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="images/bd_promo.jpg" alt="blind-date" width="160" height="160">
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/1PQjzKgFcrAesMIDJr-WDlCwuGUxZJZwO/view?usp=sharing">
-                <papertitle>Blind Date: Using Proper Motions to Determine the Ages of Historical Images</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>, <a href="http://cosmo.nyu.edu/hogg/">David W. Hogg</a>, <a href="http://www.astro.princeton.edu/~dstn/">Dustin Lang</a>, <a href="http://cs.nyu.edu/~roweis/">Sam Roweis</a>
-              <br>
-              <em>The Astronomical Journal</em>, 136, 2008
-              <p>Using the relative motions of stars we can accurately estimate the date of origin of historical astronomical images.</p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <img src="images/clean_promo.jpg" alt="clean-usnob" width="160" height="160">
-            </td>
-            <td width="75%" valign="middle">
-              <a href="https://drive.google.com/file/d/1YvRx-4hrZoCk-nl6OgVJZlHAqOiN5hWq/view?usp=sharing">
-                <papertitle>Cleaning the USNO-B Catalog Through Automatic Detection of Optical Artifacts</papertitle>
-              </a>
-              <br>
-              <strong>Jonathan T. Barron</strong>, <a href="http://stumm.ca/">Christopher Stumm</a>, <a href="http://cosmo.nyu.edu/hogg/">David W. Hogg</a>, <a href="http://www.astro.princeton.edu/~dstn/">Dustin Lang</a>, <a href="http://cs.nyu.edu/~roweis/">Sam Roweis</a>
-              <br>
-              <em>The Astronomical Journal</em>, 135, 2008
-              <p>We use computer vision techniques to identify and remove diffraction spikes and reflection halos in the USNO-B Catalog.</p>
-              <p>In use at <a href="http://www.astrometry.net">Astrometry.net</a></p>
-            </td>
-          </tr>
-
-        </tbody></table> -->
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
-          <tr>
-            <td>
-              <heading>Service</heading>
-            </td>
-          </tr>
-        </tbody></table>
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/sarsa.gif' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>SARSA: SOOP AI Realtime Streaming Assistant</papertitle>
-              <br>
-        <em><a href="https://www.sooplive.co.kr/">SOOP</a></em>
-              <br>
-        <em>2026.01.01 - 2026.05.10 (release: 2025.04.17)</em>
-              <br>
-        <a href="https://vod.sooplive.co.kr/player/158130975">[video]</a>
-        <!-- <a href="https://vod.sooplive.co.kr/player/158802521">[video2]</a>
-        <a href="https://vod.sooplive.co.kr/player/155304379">[video3]</a>
-        <a href="https://vod.sooplive.co.kr/player/155519885">[video4]</a>
-        <a href="https://vod.sooplive.co.kr/player/155333773">[video5]</a> -->
-              <br>
-        <p></p>
-              <p>SARSA (쌀사) is an AI manager that helps streamers with their broadcast content and hosting, and supports communication with their fans. In the SARSA project, I plan to improve the overall framework of the existing service, advance individual modules such as Automatic Speech Recognition (ASR) and speaker diarization, and develop Live Recap, which provides post-stream feedback to help streamers grow. Through these enhancements, SARSA will evolve into an AI manager that grows alongside streamers.</p>
-              <p></p>
-              <!-- <br> -->
-            </td>
-          </tr>
-        </tbody></table>            
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/soop_logo.gif' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>SOOPi: SOOP Personalized Intelligence</papertitle>
-              <br>
-        <em><a href="https://www.sooplive.co.kr/">SOOP</a></em>
-              <br>
-        <em>2024.09.27 - 2025.12.31 (release: 2025.03.26)</em>
-              <br>
-        <a href="https://vod.sooplive.co.kr/player/158925719">[video]</a>
-        <a href="https://vod.sooplive.co.kr/player/158802521">[video2]</a>
-        <a href="https://vod.sooplive.co.kr/player/155304379">[video3]</a>
-        <a href="https://vod.sooplive.co.kr/player/155519885">[video4]</a>
-        <a href="https://vod.sooplive.co.kr/player/155333773">[video5]</a>
-              <br>
-        <p></p>
-              <p>SOOPi (수피) is an AI assistant based on streamer personas. Through SOOPi, users can chat freely with their favorite streamers and get personalized recommendations for broadcast content they might enjoy. To prevent hateful and harmful activities, such as sexual harassment, we introduce SHIELD (SOOP's Hate speech Identification Engine for Lasting Defense), a safety classifier to detect various types of adversarial safety risks. If you subscribe to a streamer available on SOOPi, anyone can use it. Try it now!</p>
-              <p></p>
-              <br>
-              <br>
-              <br>
-            </td>
-          </tr>
-        </tbody></table>            
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
-          <tr>
-            <td>
-              <heading>Award</heading>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-           <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/avh_2022.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>2022 Azure Virtual Hackathon</papertitle>
-              <br>
-              Yeram Lim,
-              Moongi Lee,
-              Juhui Heo,
-              <strong>Jeiyoon Park</strong>
-              <br> 
-        <em><a href="https://www.microsoft.com/en-us/ai?activetab=pivot1%3aprimaryr6">Microsoft</a></em>
-              <br>
-        <em>First Place, 2022.06.10</em>
-              <br>
-              <a href="https://jeiyoon.github.io/data/avh2022.pdf">[slide]</a>
-              <a href="https://github.com/Jeiyoon/Azure-Virtual-Hackathon-2022">[github]</a>
-              <a href="https://youtu.be/QVLbQMFT02o">[video1]</a>
-              <a href="https://youtu.be/FfWh0l_5cdg">[video2]</a>
-              <p></p>
-              <p>Azure Virtual Hackathon aims to solve various social problems we face, such as climate change and AI for accessibility, by using Azure, Microsoft's AI solution. This work introduces "Hi Azure!: Helping video creators who are visually-impaired edit videos using Azure Cloud AI!", a framework for increasing accessibility to video editing and content creation for visually impaired creators by extracting visual features from video, converting them to voice, and providing them as frame-level descriptions. We came in first place at this Hackathon and additionally I got first place at <a href="https://jeiyoon.github.io/images/1st_csc.png
-">Microsoft Cloud Skills Challenge</a> (1/63 = 1.58%). </p>
-            </td>
-          </tr>          
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-           <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/spark.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>The 3rd AI SPARK Challenge</papertitle>
-              <br>
-              <a href="https://chocochip101.tistory.com">Kiho Kwoun</a>,
-              Moongi Lee,
-              Juhui Heo,
-              <strong>Jeiyoon Park</strong>
-              <br>
-        <em>Innopolis Foundation</em>
-              <br>
-        <em>Second Place (2/61 = 3.27%), 2022.04.15</em>
-              <br>
-              <a href="https://jeiyoon.github.io/data/spark_2022.pdf">[slide]</a>
-              <a href="https://github.com/Chocochip101/AI-SPARK-Challenge">[github]</a>
-<!--               <a href="https://jeiyoon.github.io/spark/">[page]</a> -->
-              <a href="https://www.innopolis.or.kr/board/view?menuId=MENU00410&linkId=46899">[press]</a>
-              <p></p>
-              <p>We postulate that the frames where emotional information appears frequently in a video are correlated with highlights. So our model first extract visual features and audio features from a video simultaneously. And then we employ attention mechanism with these features. Finally our model predicts importance scores from the Emotion-attended features and generates highlights based on the scores. </p>
-            </td>
-          </tr>          
-           <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/multi_d.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>2020 ETRI Autonomous Growth Artificial Intelligence Contest</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Yewon Park,
-              Jaehoon Cho,
-              Heuiseok Lim
-              <br>
-        <em>Electronics and Telecommunications Research Institute (ETRI)</em>
-              <br>
-        <em>Runner-Up Award (14/43 = 32.55%), 2020.10.20</em>
-              <br>
-              <a href="https://www.youtube.com/watch?v=D0J_wT45NLw&ab_channel=%EB%B0%95%EA%B5%AC%EB%A6%84">[video]</a>
-              <a href="https://jeiyoon.github.io/data/etri2020.pdf">[slide]</a>
-              <p></p>
-              <p>In this project, we propose a novel meta-reinforced multi-domain task-oriented dialog agent, which exploits autonomous-growing knowledge base and extends the existing single-domain agent algorithm to multi-domain. Our method is expected to handle not only inferring about information that is not shown in the training process or the relations between domain, slot, and value triples, but also responding to domains other than the existing learning domain. </p>
-            </td>
-          </tr>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/2019korean.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>2019 Korean Information Processing System Competition</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Jihwan Kim,
-              Boemjoo Park,
-              Heuiseok Lim
-              <br>
-        <em>Korean Institute of Information Scientists and Engineers</em>
-              <br>
-        <em>Encouragement Award, 2019.10</em>
-              <br>
-              <a href="https://www.khclt-2019.org/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8">[url]</a>
-              <p></p>
-              <p>The 31st Korean and Korean Information Processing Conference (HCLT 2019) was held at Daejeon Korea Institute of Science and Technology (KAIST). We were awarded the Encouragement Award at the 2019 Korean Information Processing System Competition.</p>
-            </td>
-          </tr>
-        <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/global.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>ITRC Global Makerthon 2019</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Jihwan Kim,
-              Boemjoo Park,
-              Woowon Jhang,
-              Heuiseok Lim
-              <br>
-        <em>Ministry of Science and ICT, Hyundai (Sponsor)</em>
-              <br>
-        <em>Second Place (2/34 = 5.88%), 2019.08</em>
-              <br>
-              <a href="https://www.youtube.com/watch?v=Ld4qJ8ROAlQ&list=LLcZx0CVI26bzuluUy8tA5WQ&index=12&t=0s">[video]</a>
-              <a href="https://www.youtube.com/watch?v=pV8rAGx-Eiw&list=LLcZx0CVI26bzuluUy8tA5WQ&index=15">[vlog]</a>
-              <a href="https://www.youtube.com/watch?v=C8zDxVbet_w&list=LLcZx0CVI26bzuluUy8tA5WQ&index=9&t=0s">[news]</a>
-              <a href="https://www.youtube.com/watch?v=IJLrACpaTnQ&list=LL&index=7">[news2]</a>
-              <a href="http://www.korea.kr/news/pressReleaseView.do?newsId=156346717&call_from=seoul_paper">[press]</a>
-              <p></p>
-              <p>The ITRC Global Makerton 2019 was held at Hanyang University. Our team proposed a simple noise canceling software for target noises (e.g. noise from cafe or factory etc.) and won second place.</p>
-            </td>
-          </tr>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/closet.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>The 3rd DongBu Global Electronics Competition 2016</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Jeongse Park
-              <br>
-        <em>DB Foundation</em>
-              <br>
-        <em> Runner-Up Award (90/1200 = 7.5%), 2016.11</em>
-              <br>
-              <a href="data/closet.pdf">[slide]</a>
-              <p></p>
-              <p>We proposed a simple closet that help people to keep their clothes clean and efficient. Also, we invented a novel hanger sensor and actuator for this project. I collaborated with the designer "Jeongse" and we were awarded the runner-up prize. </p>
-            </td>
-          </tr>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/newheart.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>The 6th K-ICT Creative Idea Contest</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Minji Kim,
-              Yeonkyung Kim,
-              Kihwan Shin
-              <br>
-        <em>Ministry of Science, ICT and Future Planning</em>
-              <br>
-        <em>Encouragement Award (19/473 = 4.01%), 2016.10</em>
-              <br>
-              <a href="data/newheart.pdf">[pdf]</a>
-              <a href="https://youtu.be/kHpnG5YSPso">[news]</a>
-              <p></p>
-              <p>We proposed "smart hospital scenario using future robot technology". I collaborated with the nurse "Minji", designer "Yeonkyung", and computer scientist "Kihwan" for this project. We won the Encouragement award.</p>
-            </td>
-          </tr>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/challenge.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>International Robot Contest & R-BIZ Challenge 2016: Self-Driving Car Mission</papertitle>
-              <br>
-              <strong>Jeiyoon Park</strong>,
-              Seunghee Woo
-              <br>
-        <em>Ministry of Trade, Industry and Energy</em>
-              <br>
-        <em>Bronze Medal, 2016.10</em>
-              <br>
-              <a href="images/map.png">[map]</a>
-              <p></p>
-              <p>This challenge consists of four missions: (1) Pattern recognition for the trafic sign. (2) Autonomous parking. (3) Stop drving in front of a pedestrian crossing. (4) Any missions that you want to perform. We won the bronze medal in this challenge.</p>
-            </td>
-          </tr>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/texas.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Texas Instruments Innovation Challenge Korea Final : MCU Design Contest 2015</papertitle>
-              <br>
-              <a href="http://dyros.snu.ac.kr/team/joonwoo-ahn/">Joonwoo Ahn</a>,
-              Hoosang Lee,
-              YoonJoo Choi,
-              <strong>Jeiyoon Park</strong>
-              <br>
-        <em>Texas Instrument Korea</em>
-              <br>
-        <em>Second Place (2/70 = 2.85%), 2015.11</em>
-              <br>
-              <a href="data/Racing_Simulator.pdf">[slide]</a>
-              <p></p>
-              <p>We proposed a novel racing simulator which is fun and safe to enjoy at a much lower price than previous racing simulators. To this end, we invented new elastic actuator. We won second place.</p>
-            </td>
-          </tr>
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
-          <tr>
-            <td>
-              <heading>Granted Patent</heading>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/ko_property_office.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Noise Canceling Device for Companion Animal and Method Using Same</papertitle>
-              <br>
-        <em>Korea Intellectual Property Office</em>
-              <br>
-        <em>2023.06.01 - 2040.07.27</em>
-              <br>
-        <em>Patent number: 10-2540549</em>
-<!--               <a href="https://jeiyoon.github.io/data/patent_10-2540549.pdf">[pdf]</a> -->
-              <p></p>
-              <br>
-              <br>
-              <br>
-            </td>
-          </tr>
-        </tbody></table>           
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
-          <tr>
-            <td>
-              <heading>Teaching</heading>
-            </td>
-          </tr>
-        </tbody></table>
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/nvidia_dli.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Building Real-Time Video AI Applications</papertitle>
-              <br>
-        <em>NVIDIA, Hyundai, and Global Acceleration Program for Startups (GAPS)</em>
-              <br>
-        <em>2023.09, Instructor</em>
-              <br>      
-        <em>2022.08, Instructor</em>
-              <br>
-        <em>2022.07, Teaching Assistant</em>
-              <br>
-              <a href="https://jeiyoon.github.io/data/072822_DeepStream_jeiyoon.pdf">[pdf]</a>
-              <a href="https://courses.nvidia.com/courses/course-v1:DLI+S-IV-01+V1/">[url]</a>           
-              <p></p>         
-              <br>
-              <br>
-            </td>
-          </tr>
-        </tbody></table>          
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/fast_campus.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Year-Dream School (2nd Generation)</papertitle>
-              <br>
-        <em>Fast Campus</em>
-              <br>
-        <em>2022.09 - 2022.10, Mentor</em>
-              <br>
-              <a href="https://jeiyoon.github.io/data/team10_final_revised.pdf">[slide1]</a>
-              <a href="https://jeiyoon.github.io/data/team11_final.pdf">[slide2]</a>
-              <a href="https://jeiyoon.github.io/images/yeardream22_review.jpg">[review]</a>
-              <p></p>
-              <br>
-              <br>
-              <br>
-              <br>
-            </td>
-          </tr>
-        </tbody></table>              
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/nv_bootcamp21.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>SEOULTECH - KSCE AI For Science GPU Bootcamp</papertitle>
-              <br>
-        <em>NVIDIA, OpenACC, <a href="https://en.seoultech.ac.kr/">SEOULTECH</a> and Korean Society for Computational Science and Engineering</em>
-              <br>
-        <em>2021.12, Mentor (with <a href="https://github.com/yhgon">Hyungon Ryu</a> at NVIDIA)</em>
-              <br>
-              <a href="data/14.%20Certificate%20of%20Attendance_SeoulTech_Jei%20Yoon%20Park.pdf">[pdf]</a>
-              <a href="data/NVIDIA_HPC_AI.pdf">[slide]</a>
-              <a href="https://github.com/gpuhackathons-org/gpubootcamp/tree/master/hpc_ai">[github]</a>             
-              <p></p>
-<!--               <papertitle>AI For Science</papertitle>
-              <br>
-              <em>NVIDIA and SEOULTECH</em>
-              <br>
-              <em>2021.12, Teaching Assistant</em> -->
-              <br>
-<!--               [TBA] -->
-              <br>
-              <br>
-            </td>
-          </tr>
-        </tbody></table>            
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/dli21.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>NVIDIA DLI Workshop: Fundamentals of Deep Learning</papertitle>
-              <br>
-        <em>NVIDIA Deep Learning Institute, and TAVE</em>
-              <br>
-        <em>2021.12, Instructor</em>
-              <br>
-              <a href="data/DLI Workshop Wrap up_yerim_and_jeiyoon.pdf">[pdf]</a>
-              <a href="data/dli2021_jeiyoon_1.pdf">[slide1]</a>
-              <a href="data/dli2021_jeiyoon_2.pdf">[slide2]</a>
-              <a href="data/dli2021_jeiyoon_3.pdf">[slide3]</a>
-              <a href="data/dli2021_jeiyoon_4.pdf">[slide4]</a>
-              <a href="data/dli2021_jeiyoon_5.pdf">[slide5]</a>
-              <a href="data/dli2021_jeiyoon_6.pdf">[slide6]</a>
-              <br>
-              <br>
-              <br>
-              <p></p>            
-              <br>
-              <br>
-<!--               <br> -->
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/gtc2021.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Building Transformer-Based Natural Language Processing Applications - DLIW1390</papertitle>
-              <br>
-        <em>NVIDIA GPU TECHNOLOGY CONFERENCE 2021 (GTC21)</em>
-              <br>
-        <em>2021.11, Teaching Assistant</em>
-              <br>
-              <a href="data/gtc21.pdf">[pdf]</a>
-              <p></p>
-              <br>             
-              <br>
-              <br>
-              <br>
-            </td>
-          </tr>
-        </tbody></table>                    
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/ipa.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Introduction to Reinforcement Learning</papertitle>
-              <br>
-        <em>Korea IT Business Promotion Association</em>
-              <br>
-        <em>2020.08, Instructor</em>
-              <br>
-              <a href="data/ipa_1.pdf">[slide1]</a>
-              <a href="data/ipa_2.pdf">[slide2]</a>
-              <p></p>
-              <papertitle>Introduction to Reinforcement Learning and Natural Language Processing</papertitle>
-              <br>
-        <em>Korea IT Business Promotion Association</em>
-              <br>
-        <em>2020.08, Instructor</em>
-              <br>
-              <a href="data/ipa_3.pdf">[slide]</a>
-              <br>
-              <br>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/skc.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Deep Q-Networks (DQN)</papertitle>
-              <br>
-        <em>SKC</em>
-              <br>
-        <em>2019.10, Instructor</em>
-              <br>
-              <a href="data/SKC_DQN.pdf">[slide]</a>
-              <br>
-              <br>
-              <br>
-              <p></p>
-            </td>
-          </tr>
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
-          <tr>
-            <td>
-              <heading>Student Activity</heading>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/nvidia_dli.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>NVIDIA DLI Certificated Instructor Program </papertitle>
-              <br>
-              <em><a href="https://www.nvidia.com/en-us/training/">NVIDIA Deep Learning Institute</a></em>
-              <br>
-              <a href="data/DLI%20M-AA-00%20Certificate%20_%20Deep%20Learning%20Institute.pdf">[pdf]</a> <a href="https://www.nvidia.com/en-us/training/instructor-directory/bio/?instructorId=0031W00002km1eHQAQ">[url]</a> (University Ambassador Certificate)
-              <br>
-              <a href="/data/Certificate%203b63669429a5435c8ba0ab96f428875e.pdf">[pdf]</a> 
-        <em>(Building Transformer-Based NLP Applications, Spring 2022 - Winter 2022)</em>              
-              <br>              
-              <a href="data/DLI%20C-FX-01%20Certificate%20_%20Deep%20Learning%20Institute.pdf">[pdf]</a>
-        <em>(Fundamentals of Deep Learning, Summer 2021 - Winter 2021)</em>
-              <p></p>
-              <br>
-              <br>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/samsung_logo_black.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Samsung Junior Software Cup</papertitle>
-              <br>
-        <em>Mentor</em>
-              <br>
-        <em>A chatbot to close the Digital Divide for the elderly</em>
-              <br>
-        <em>Summer 2021 - Fall 2021</em>
-              <br>
-              <a href="https://jeiyoon.github.io/data/sjw_certificate.pdf">[pdf]</a> <a href="https://github.com/Jeiyoon/CBNGR">[github]</a> <a href="https://www.youtube.com/channel/UCHkPiWsitxr_0VdqVc61ISA">[video]</a>
-              <br>
-              <a href="https://jeiyoon.github.io/data/sjw_final.pdf">[slide]</a> (Finals, 2021.10.16) 
-              <br>
-              <a href="https://jeiyoon.github.io/data/sjw_semi.pdf">[slide]</a> (Semifinals, 30/60 = 50%, 2021.09.11)              
-              <br>
-              <a href="https://jeiyoon.github.io/data/sjw_pre.pdf">[slide]</a> (Preliminaries, 60/170 = 35.29%, 2021.08.09)
-              <p></p>
-            </td>
-          </tr>
-        </tbody></table>          
-<!--         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/tave_research.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>TAVE Research</papertitle>
-              <br>
-        <em><a href="https://tavewave.github.io/">TAVE</a></em>, Founder of TAVE Research
-              <br>
-        <em>Spring 2021 - Now</em>
-              <br>
-              <a href="https://taveresearch.github.io/">[page]</a>
-              <p></p>
-              <br>
-              <br>
-            </td>
-          </tr>
-        </tbody></table> -->
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/tave.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>4th Industrial Revolution Research Club</papertitle>
-              <br>
-        <em><a href="https://www.instagram.com/tave_wave/">TAVE</a></em>, leader of the team "Reinforcement Learning"
-              <br>
-        <em>Summer 2020 - Winter 2020</em>
-              <br>
-<!--               <a href="data/1127_OB_lecture.pdf">[pdf]</a> (Invited talk, 2021.11)  -->
-<!--               <br> -->
-              <a href="data/tave_award4.pdf">[pdf]</a> (Outstanding member award, 5/69 = 7.24%, 2020.11)             
-              <br>
-              <a href="data/tave_award3.pdf">[pdf]</a> (First place, 1/8 = 12.5%, 2020.11)
-              <br>
-              <a href="data/tave_award2.pdf">[pdf]</a> (Outstanding member award, 3/69 = 4.34%, 2020.09)
-              <br>
-              <a href="data/tave_award1.pdf">[pdf]</a> (Second place, 2/20 = 10%, 2020.09)
-<!--               <br> -->
-              <p></p>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">   
-                <img src='images/korea.jpg' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Teaching Assistant Scholarships</papertitle>
-              <br>
-        <em><a href="http://www.korea.edu/mbshome/mbs/en/index.do">Korea University</a></em>, 1st Semester, 2020
-              <br>
-        <em>Spring 2020 - Summer 2020</em>
-              <br>
-              <p></p>
-              <p></p>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/snu.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>4th Industrial Revolution Academy</papertitle>
-              <br>
-        <em><a href="https://en.snu.ac.kr/">Seoul National University</a></em>
-              <br>
-        <em>Summer 2017 - Spring 2018</em>
-              <p></p>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr onmouseout="ff_stop()" onmouseover="ff_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/kosaf5.png' width="160">
-              </div>
-              <script type="text/javascript">
-                function ff_start() {
-                  document.getElementById('ff_image').style.opacity = "1";
-                }
-
-                function ff_stop() {
-                  document.getElementById('ff_image').style.opacity = "0";
-                }
-                ff_stop()
-              </script>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle>Mentoring to Nurture Next Generation Leaders</papertitle>
-              <br>
-        <em><a href="https://www.kosaf.go.kr/eng/jsp/main.jsp">Korea Student Aid Foundation</a>, mentored by <a href="https://www.kari.re.kr/eng/sub01_01.do">Lim Cheol-ho</a></em>
-              <br>
-        <em>Spring 2017 - Winter 2017</em>
-              <br>
-              <a href="data/kosaf.pdf">[pdf]</a>
-              <br>
-              <p></p>
-            </td>
-          </tr>
-        </tbody></table>
-                <br>
-                I like <a href="https://jonbarron.info/">this wepsite</a> too 😊</a> 
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
-      </td>
-    </tr>
-  </table>
+<main class="page">
+
+  <header class="intro">
+    <div class="intro-text">
+      <h1>Jeiyoon Park</h1>
+      <p>I'm an AI Research Engineer at <a href="https://www.smilegate.com/en">Smilegate</a>.</p>
+      <p>My research interests are Role-Playing Agents (RPAs), Game AI, AI-driven Non-Player Characters (NPCs), Retrieval-Augmented Generation (RAG), On-Device AI, and Machine Translation.</p>
+      <p>Contact: <a href="mailto:k4ke@korea.ac.kr">k4ke@korea.ac.kr</a></p>
+      <nav class="social" aria-label="Profiles">
+        <a href="https://github.com/Jeiyoon">Github</a>
+        <a href="https://scholar.google.co.kr/citations?user=JGR0j9QAAAAJ&amp;hl=ko&amp;oi=ao">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/jeiyoon/">LinkedIn</a>
+        <a href="https://huggingface.co/naruto-soop">Hugging Face</a>
+        <a href="https://www.instagram.com/cloudwantsasnack/">Instagram</a>
+      </nav>
+    </div>
+    <a class="portrait" href="https://youtu.be/X7ymriMhoj0?feature=shared">
+      <img src="images/jeiyoon_thailand.jpg" alt="Jeiyoon Park">
+    </a>
+  </header>
+
+  <nav class="toc" aria-label="Sections">
+    <a href="#news">News</a>
+    <a href="#research">Research</a>
+    <a href="#service">Service</a>
+    <a href="#award">Award</a>
+    <a href="#patent">Granted Patent</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#student">Student Activity</a>
+  </nav>
+
+  <section id="news">
+    <h2>News</h2>
+    <ul class="news">
+      <li><span class="date">Sep 2026</span><span><a href="https://arxiv.org/abs/2601.02641">Our Paper</a> got accepted to <a href="https://2026.aaclnet.org/">AACL-IJCNLP 2026 Main Track</a>.</span></li>
+      <li><span class="date">May 2026</span><span>I will join <a href="https://www.smilegate.com/en">Smilegate</a> as an AI Research Engineer, where I will work with the Behavior AI Team to research and develop AI-driven NPC technologies for <a href="https://lostarkmobile.onstove.com/main">Lost Ark Mobile</a>.</span></li>
+      <li><span class="date">Apr 2025</span><span>I will serve as a program committee member at <a href="https://sig-edu.org/bea/2025">BEA-ACL 2025</a>.</span></li>
+      <li><span class="date">Feb 2025</span><span><a href="https://aclanthology.org/2025.naacl-industry.24/">Our Paper</a> got accepted to <a href="https://2025.naacl.org/calls/industry/">NAACL 2025 Industry Track</a> (Oral).</span></li>
+      <li><span class="date">Nov 2024</span><span>We showcase SOOPi, an AI assistant based on streamer personas, at <a href="https://gstar.or.kr/eng">G-STAR 2024</a>.</span></li>
+      <li><span class="date">Mar 2024</span><span>I will serve as a program committee member at <a href="https://sig-edu.org/bea/2024">BEA-NAACL 2024</a>.</span></li>
+      <li><span class="date">June 2022</span><span>Our team came in first place at 2022 <a href="https://www.microsoft.com/en-us/ai?activetab=pivot1%3aprimaryr6">Microsoft</a> Azure Virtual Hackathon.</span></li>
+      <li><span class="date">Mar 2021</span><span>I interned as a NLP researcher at <a href="https://www.webtoons.com/en/">Naver Webtoon</a> (Webtoon AI), where I had a wonderful time working with Chaeheon Gwak and Seho Kim, and being mentored by <a href="https://www.linkedin.com/in/daesikkim/?locale=en_US">Daesik Kim</a> also.</span></li>
+    </ul>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/forest_qualitative.png" alt=""></div>
+      <div class="body">
+        <h3>An Empirical Study of On-Device Translation for Real-Time Live-Stream Chat on Mobile Devices</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Daehwan Lee, Changmin Yeo, Yongshin Han, Minseop Kim</p>
+        <p class="venue"><em>AACL-IJCNLP, 2026</em></p>
+        <p class="links">
+          <a href="https://arxiv.org/abs/2601.02641">[arXiv]</a>
+          <span class="todo">[dataset]</span>
+          <span class="todo">[github]</span>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/amadeus.png" alt=""></div>
+      <div class="body">
+        <h3>Dynamic Context Adaptation for Consistent Role-Playing Agents with Retrieval-Augmented Generations</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Yongshin Han, Minseop Kim, Kisu Yang</p>
+        <p class="venue"><em>Preprint, 2025</em></p>
+        <p class="links">
+          <a href="https://arxiv.org/abs/2508.02016">[arXiv]</a>
+          <a href="https://huggingface.co/datasets/naruto-soop/CharacterRAG">[dataset]</a>
+          <span class="todo">[github]</span>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/anonymous_characters.png" alt=""></div>
+      <div class="body">
+        <h3>CharacterGPT: A Persona Reconstruction Framework for Role-Playing Agents</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Chanjun Park, Heuiseok Lim</p>
+        <p class="venue"><em>NAACL, 2025</em> <span class="accent">(Oral Presentation)</span></p>
+        <p class="links">
+          <a href="https://arxiv.org/abs/2405.19778">[arXiv]</a>
+          <a href="bibtex/Jeiyoon-charactergpt.txt">[bibtex]</a>
+          <a href="https://github.com/Jeiyoon/charactergpt">[github]</a>
+          <a href="data/charactergpt_poster.pdf">[poster]</a>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/chatlang8_result.png" alt=""></div>
+      <div class="body">
+        <h3>ChatLang-8: An LLM-Based Synthetic Data Generation Framework for Grammatical Error Correction</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Chanjun Park, Heuiseok Lim</p>
+        <p class="venue"><em>Preprint, 2024</em></p>
+        <p class="links">
+          <a href="https://arxiv.org/abs/2406.03202">[arXiv]</a>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/mfst_architecture.png" alt=""></div>
+      <div class="body">
+        <h3>Multimodal Frame-Scoring Transformer for Video Summarization</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Kiho Kwoun, Chanhee Lee, Heuiseok Lim</p>
+        <p class="venue"><em>Preprint, 2023</em></p>
+        <p class="links">
+          <a href="https://arxiv.org/abs/2207.01814">[arXiv]</a>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/figure_qualitative-1.png" alt=""></div>
+      <div class="body">
+        <h3>Analysis of Utterance Embeddings and Clustering Methods Related to Intent Induction for Task-Oriented Dialogue</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Yoonna Jang, Chanhee Lee, Heuiseok Lim</p>
+        <p class="venue"><em>The Eleventh Dialog System Technology Challenge (DSTC11), SIGdial-INLG 2023</em></p>
+        <p class="links">
+          <a href="https://arxiv.org/abs/2212.02021">[arXiv]</a>
+          <a href="bibtex/Jeiyoon-dstc11.txt">[bibtex]</a>
+          <a href="https://github.com/Jeiyoon/dstc11-track2">[github]</a>
+          <a href="data/dstc11_poster_paper_15.pdf">[poster]</a>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/vrb.png" alt=""></div>
+      <div class="body">
+        <h3>Variational Reward Estimator Bottleneck: Learning Robust Reward Estimator for Multi-Domain Task-Oriented Dialog</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Chanhee Lee, <a href="https://parkchanjun.github.io/">Chanjun Park</a>, Kuekyeng Kim, Heuiseok Lim</p>
+        <p class="venue"><em>Applied Sciences (SCI)</em>, 2021</p>
+        <p class="links">
+          <a href="https://www.mdpi.com/2076-3417/11/14/6624">[journal]</a>
+          <a href="bibtex/Jeiyoon-AppliedSciences.txt">[bibtex]</a>
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <section id="service">
+    <h2>Service</h2>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/sarsa.gif" alt=""></div>
+      <div class="body">
+        <h3>SARSA: SOOP AI Realtime Streaming Assistant</h3>
+        <p class="venue"><em><a href="https://www.sooplive.co.kr/">SOOP</a></em></p>
+        <p class="venue"><em>2026.01.01 - 2026.05.10 (release: 2025.04.17)</em></p>
+        <p class="links">
+          <a href="https://vod.sooplive.co.kr/player/158130975">[video]</a>
+        </p>
+        <p class="desc">SARSA (쌀사) is an AI manager that helps streamers with their broadcast content and hosting, and supports communication with their fans. In the SARSA project, I plan to improve the overall framework of the existing service, advance individual modules such as Automatic Speech Recognition (ASR) and speaker diarization, and develop Live Recap, which provides post-stream feedback to help streamers grow. Through these enhancements, SARSA will evolve into an AI manager that grows alongside streamers.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/soop_logo.gif" alt=""></div>
+      <div class="body">
+        <h3>SOOPi: SOOP Personalized Intelligence</h3>
+        <p class="venue"><em><a href="https://www.sooplive.co.kr/">SOOP</a></em></p>
+        <p class="venue"><em>2024.09.27 - 2025.12.31 (release: 2025.03.26)</em></p>
+        <p class="links">
+          <a href="https://vod.sooplive.co.kr/player/158925719">[video]</a>
+          <a href="https://vod.sooplive.co.kr/player/158802521">[video2]</a>
+          <a href="https://vod.sooplive.co.kr/player/155304379">[video3]</a>
+          <a href="https://vod.sooplive.co.kr/player/155519885">[video4]</a>
+          <a href="https://vod.sooplive.co.kr/player/155333773">[video5]</a>
+        </p>
+        <p class="desc">SOOPi (수피) is an AI assistant based on streamer personas. Through SOOPi, users can chat freely with their favorite streamers and get personalized recommendations for broadcast content they might enjoy. To prevent hateful and harmful activities, such as sexual harassment, we introduce SHIELD (SOOP's Hate speech Identification Engine for Lasting Defense), a safety classifier to detect various types of adversarial safety risks. If you subscribe to a streamer available on SOOPi, anyone can use it. Try it now!</p>
+      </div>
+    </article>
+  </section>
+
+  <section id="award">
+    <h2>Award</h2>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/avh_2022.png" alt=""></div>
+      <div class="body">
+        <h3>2022 Azure Virtual Hackathon</h3>
+        <p class="authors">Yeram Lim, Moongi Lee, Juhui Heo, <strong>Jeiyoon Park</strong></p>
+        <p class="venue"><em><a href="https://www.microsoft.com/en-us/ai?activetab=pivot1%3aprimaryr6">Microsoft</a></em></p>
+        <p class="venue"><em>First Place, 2022.06.10</em></p>
+        <p class="links">
+          <a href="https://jeiyoon.github.io/data/avh2022.pdf">[slide]</a>
+          <a href="https://github.com/Jeiyoon/Azure-Virtual-Hackathon-2022">[github]</a>
+          <a href="https://youtu.be/QVLbQMFT02o">[video1]</a>
+          <a href="https://youtu.be/FfWh0l_5cdg">[video2]</a>
+        </p>
+        <p class="desc">Azure Virtual Hackathon aims to solve various social problems we face, such as climate change and AI for accessibility, by using Azure, Microsoft's AI solution. This work introduces "Hi Azure!: Helping video creators who are visually-impaired edit videos using Azure Cloud AI!", a framework for increasing accessibility to video editing and content creation for visually impaired creators by extracting visual features from video, converting them to voice, and providing them as frame-level descriptions. We came in first place at this Hackathon and additionally I got first place at <a href="https://jeiyoon.github.io/images/1st_csc.png">Microsoft Cloud Skills Challenge</a> (1/63 = 1.58%).</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/spark.png" alt=""></div>
+      <div class="body">
+        <h3>The 3rd AI SPARK Challenge</h3>
+        <p class="authors"><a href="https://chocochip101.tistory.com">Kiho Kwoun</a>, Moongi Lee, Juhui Heo, <strong>Jeiyoon Park</strong></p>
+        <p class="venue"><em>Innopolis Foundation</em></p>
+        <p class="venue"><em>Second Place (2/61 = 3.27%), 2022.04.15</em></p>
+        <p class="links">
+          <a href="https://jeiyoon.github.io/data/spark_2022.pdf">[slide]</a>
+          <a href="https://github.com/Chocochip101/AI-SPARK-Challenge">[github]</a>
+          <a href="https://www.innopolis.or.kr/board/view?menuId=MENU00410&amp;linkId=46899">[press]</a>
+        </p>
+        <p class="desc">We postulate that the frames where emotional information appears frequently in a video are correlated with highlights. So our model first extract visual features and audio features from a video simultaneously. And then we employ attention mechanism with these features. Finally our model predicts importance scores from the Emotion-attended features and generates highlights based on the scores.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/multi_d.png" alt=""></div>
+      <div class="body">
+        <h3>2020 ETRI Autonomous Growth Artificial Intelligence Contest</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Yewon Park, Jaehoon Cho, Heuiseok Lim</p>
+        <p class="venue"><em>Electronics and Telecommunications Research Institute (ETRI)</em></p>
+        <p class="venue"><em>Runner-Up Award (14/43 = 32.55%), 2020.10.20</em></p>
+        <p class="links">
+          <a href="https://www.youtube.com/watch?v=D0J_wT45NLw&amp;ab_channel=%EB%B0%95%EA%B5%AC%EB%A6%84">[video]</a>
+          <a href="https://jeiyoon.github.io/data/etri2020.pdf">[slide]</a>
+        </p>
+        <p class="desc">In this project, we propose a novel meta-reinforced multi-domain task-oriented dialog agent, which exploits autonomous-growing knowledge base and extends the existing single-domain agent algorithm to multi-domain. Our method is expected to handle not only inferring about information that is not shown in the training process or the relations between domain, slot, and value triples, but also responding to domains other than the existing learning domain.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/2019korean.jpg" alt=""></div>
+      <div class="body">
+        <h3>2019 Korean Information Processing System Competition</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Jihwan Kim, Boemjoo Park, Heuiseok Lim</p>
+        <p class="venue"><em>Korean Institute of Information Scientists and Engineers</em></p>
+        <p class="venue"><em>Encouragement Award, 2019.10</em></p>
+        <p class="links">
+          <a href="https://www.khclt-2019.org/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8">[url]</a>
+        </p>
+        <p class="desc">The 31st Korean and Korean Information Processing Conference (HCLT 2019) was held at Daejeon Korea Institute of Science and Technology (KAIST). We were awarded the Encouragement Award at the 2019 Korean Information Processing System Competition.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/global.jpg" alt=""></div>
+      <div class="body">
+        <h3>ITRC Global Makerthon 2019</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Jihwan Kim, Boemjoo Park, Woowon Jhang, Heuiseok Lim</p>
+        <p class="venue"><em>Ministry of Science and ICT, Hyundai (Sponsor)</em></p>
+        <p class="venue"><em>Second Place (2/34 = 5.88%), 2019.08</em></p>
+        <p class="links">
+          <a href="https://www.youtube.com/watch?v=Ld4qJ8ROAlQ&amp;list=LLcZx0CVI26bzuluUy8tA5WQ&amp;index=12&amp;t=0s">[video]</a>
+          <a href="https://www.youtube.com/watch?v=pV8rAGx-Eiw&amp;list=LLcZx0CVI26bzuluUy8tA5WQ&amp;index=15">[vlog]</a>
+          <a href="https://www.youtube.com/watch?v=C8zDxVbet_w&amp;list=LLcZx0CVI26bzuluUy8tA5WQ&amp;index=9&amp;t=0s">[news]</a>
+          <a href="https://www.youtube.com/watch?v=IJLrACpaTnQ&amp;list=LL&amp;index=7">[news2]</a>
+          <a href="http://www.korea.kr/news/pressReleaseView.do?newsId=156346717&amp;call_from=seoul_paper">[press]</a>
+        </p>
+        <p class="desc">The ITRC Global Makerton 2019 was held at Hanyang University. Our team proposed a simple noise canceling software for target noises (e.g. noise from cafe or factory etc.) and won second place.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/closet.jpg" alt=""></div>
+      <div class="body">
+        <h3>The 3rd DongBu Global Electronics Competition 2016</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Jeongse Park</p>
+        <p class="venue"><em>DB Foundation</em></p>
+        <p class="venue"><em>Runner-Up Award (90/1200 = 7.5%), 2016.11</em></p>
+        <p class="links">
+          <a href="data/closet.pdf">[slide]</a>
+        </p>
+        <p class="desc">We proposed a simple closet that help people to keep their clothes clean and efficient. Also, we invented a novel hanger sensor and actuator for this project. I collaborated with the designer "Jeongse" and we were awarded the runner-up prize.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/newheart.png" alt=""></div>
+      <div class="body">
+        <h3>The 6th K-ICT Creative Idea Contest</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Minji Kim, Yeonkyung Kim, Kihwan Shin</p>
+        <p class="venue"><em>Ministry of Science, ICT and Future Planning</em></p>
+        <p class="venue"><em>Encouragement Award (19/473 = 4.01%), 2016.10</em></p>
+        <p class="links">
+          <a href="data/newheart.pdf">[pdf]</a>
+          <a href="https://youtu.be/kHpnG5YSPso">[news]</a>
+        </p>
+        <p class="desc">We proposed "smart hospital scenario using future robot technology". I collaborated with the nurse "Minji", designer "Yeonkyung", and computer scientist "Kihwan" for this project. We won the Encouragement award.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/challenge.jpg" alt=""></div>
+      <div class="body">
+        <h3>International Robot Contest &amp; R-BIZ Challenge 2016: Self-Driving Car Mission</h3>
+        <p class="authors"><strong>Jeiyoon Park</strong>, Seunghee Woo</p>
+        <p class="venue"><em>Ministry of Trade, Industry and Energy</em></p>
+        <p class="venue"><em>Bronze Medal, 2016.10</em></p>
+        <p class="links">
+          <a href="images/map.png">[map]</a>
+        </p>
+        <p class="desc">This challenge consists of four missions: (1) Pattern recognition for the traffic sign. (2) Autonomous parking. (3) Stop driving in front of a pedestrian crossing. (4) Any missions that you want to perform. We won the bronze medal in this challenge.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/texas.png" alt=""></div>
+      <div class="body">
+        <h3>Texas Instruments Innovation Challenge Korea Final : MCU Design Contest 2015</h3>
+        <p class="authors"><a href="http://dyros.snu.ac.kr/team/joonwoo-ahn/">Joonwoo Ahn</a>, Hoosang Lee, YoonJoo Choi, <strong>Jeiyoon Park</strong></p>
+        <p class="venue"><em>Texas Instrument Korea</em></p>
+        <p class="venue"><em>Second Place (2/70 = 2.85%), 2015.11</em></p>
+        <p class="links">
+          <a href="data/Racing_Simulator.pdf">[slide]</a>
+        </p>
+        <p class="desc">We proposed a novel racing simulator which is fun and safe to enjoy at a much lower price than previous racing simulators. To this end, we invented new elastic actuator. We won second place.</p>
+      </div>
+    </article>
+  </section>
+
+  <section id="patent">
+    <h2>Granted Patent</h2>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/ko_property_office.jpg" alt=""></div>
+      <div class="body">
+        <h3>Noise Canceling Device for Companion Animal and Method Using Same</h3>
+        <p class="venue"><em>Korea Intellectual Property Office</em></p>
+        <p class="venue"><em>2023.06.01 - 2040.07.27</em></p>
+        <p class="venue"><em>Patent number: 10-2540549</em></p>
+      </div>
+    </article>
+  </section>
+
+  <section id="teaching">
+    <h2>Teaching</h2>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/nvidia_dli.png" alt=""></div>
+      <div class="body">
+        <h3>Building Real-Time Video AI Applications</h3>
+        <p class="venue"><em>NVIDIA, Hyundai, and Global Acceleration Program for Startups (GAPS)</em></p>
+        <p class="venue">
+          <em>2023.09, Instructor</em><br>
+          <em>2022.08, Instructor</em><br>
+          <em>2022.07, Teaching Assistant</em>
+        </p>
+        <p class="links">
+          <a href="https://jeiyoon.github.io/data/072822_DeepStream_jeiyoon.pdf">[pdf]</a>
+          <a href="https://courses.nvidia.com/courses/course-v1:DLI+S-IV-01+V1/">[url]</a>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/fast_campus.png" alt=""></div>
+      <div class="body">
+        <h3>Year-Dream School (2nd Generation)</h3>
+        <p class="venue"><em>Fast Campus</em></p>
+        <p class="venue"><em>2022.09 - 2022.10, Mentor</em></p>
+        <p class="links">
+          <a href="https://jeiyoon.github.io/data/team10_final_revised.pdf">[slide1]</a>
+          <a href="https://jeiyoon.github.io/data/team11_final.pdf">[slide2]</a>
+          <a href="https://jeiyoon.github.io/images/yeardream22_review.jpg">[review]</a>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/nv_bootcamp21.png" alt=""></div>
+      <div class="body">
+        <h3>SEOULTECH - KSCE AI For Science GPU Bootcamp</h3>
+        <p class="venue"><em>NVIDIA, OpenACC, <a href="https://en.seoultech.ac.kr/">SEOULTECH</a> and Korean Society for Computational Science and Engineering</em></p>
+        <p class="venue"><em>2021.12, Mentor (with <a href="https://github.com/yhgon">Hyungon Ryu</a> at NVIDIA)</em></p>
+        <p class="links">
+          <a href="data/14.%20Certificate%20of%20Attendance_SeoulTech_Jei%20Yoon%20Park.pdf">[pdf]</a>
+          <a href="data/NVIDIA_HPC_AI.pdf">[slide]</a>
+          <a href="https://github.com/gpuhackathons-org/gpubootcamp/tree/master/hpc_ai">[github]</a>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/dli21.jpg" alt=""></div>
+      <div class="body">
+        <h3>NVIDIA DLI Workshop: Fundamentals of Deep Learning</h3>
+        <p class="venue"><em>NVIDIA Deep Learning Institute, and TAVE</em></p>
+        <p class="venue"><em>2021.12, Instructor</em></p>
+        <p class="links">
+          <a href="data/DLI%20Workshop%20Wrap%20up_yerim_and_jeiyoon.pdf">[pdf]</a>
+          <a href="data/dli2021_jeiyoon_1.pdf">[slide1]</a>
+          <a href="data/dli2021_jeiyoon_2.pdf">[slide2]</a>
+          <a href="data/dli2021_jeiyoon_3.pdf">[slide3]</a>
+          <a href="data/dli2021_jeiyoon_4.pdf">[slide4]</a>
+          <a href="data/dli2021_jeiyoon_5.pdf">[slide5]</a>
+          <a href="data/dli2021_jeiyoon_6.pdf">[slide6]</a>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/gtc2021.jpg" alt=""></div>
+      <div class="body">
+        <h3>Building Transformer-Based Natural Language Processing Applications - DLIW1390</h3>
+        <p class="venue"><em>NVIDIA GPU TECHNOLOGY CONFERENCE 2021 (GTC21)</em></p>
+        <p class="venue"><em>2021.11, Teaching Assistant</em></p>
+        <p class="links">
+          <a href="data/gtc21.pdf">[pdf]</a>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/ipa.jpg" alt=""></div>
+      <div class="body">
+        <h3>Introduction to Reinforcement Learning</h3>
+        <p class="venue"><em>Korea IT Business Promotion Association</em></p>
+        <p class="venue"><em>2020.08, Instructor</em></p>
+        <p class="links">
+          <a href="data/ipa_1.pdf">[slide1]</a>
+          <a href="data/ipa_2.pdf">[slide2]</a>
+        </p>
+        <h3>Introduction to Reinforcement Learning and Natural Language Processing</h3>
+        <p class="venue"><em>Korea IT Business Promotion Association</em></p>
+        <p class="venue"><em>2020.08, Instructor</em></p>
+        <p class="links">
+          <a href="data/ipa_3.pdf">[slide]</a>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/skc.jpg" alt=""></div>
+      <div class="body">
+        <h3>Deep Q-Networks (DQN)</h3>
+        <p class="venue"><em>SKC</em></p>
+        <p class="venue"><em>2019.10, Instructor</em></p>
+        <p class="links">
+          <a href="data/SKC_DQN.pdf">[slide]</a>
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <section id="student">
+    <h2>Student Activity</h2>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/nvidia_dli.png" alt=""></div>
+      <div class="body">
+        <h3>NVIDIA DLI Certificated Instructor Program</h3>
+        <p class="venue"><em><a href="https://www.nvidia.com/en-us/training/">NVIDIA Deep Learning Institute</a></em></p>
+        <p class="links">
+          <a href="data/DLI%20M-AA-00%20Certificate%20_%20Deep%20Learning%20Institute.pdf">[pdf]</a>
+          <a href="https://www.nvidia.com/en-us/training/instructor-directory/bio/?instructorId=0031W00002km1eHQAQ">[url]</a>
+          <span>(University Ambassador Certificate)</span>
+        </p>
+        <p class="links">
+          <a href="/data/Certificate%203b63669429a5435c8ba0ab96f428875e.pdf">[pdf]</a>
+          <span><em>(Building Transformer-Based NLP Applications, Spring 2022 - Winter 2022)</em></span>
+        </p>
+        <p class="links">
+          <a href="data/DLI%20C-FX-01%20Certificate%20_%20Deep%20Learning%20Institute.pdf">[pdf]</a>
+          <span><em>(Fundamentals of Deep Learning, Summer 2021 - Winter 2021)</em></span>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/samsung_logo_black.png" alt=""></div>
+      <div class="body">
+        <h3>Samsung Junior Software Cup</h3>
+        <p class="venue"><em>Mentor</em></p>
+        <p class="venue"><em>A chatbot to close the Digital Divide for the elderly</em></p>
+        <p class="venue"><em>Summer 2021 - Fall 2021</em></p>
+        <p class="links">
+          <a href="https://jeiyoon.github.io/data/sjw_certificate.pdf">[pdf]</a>
+          <a href="https://github.com/Jeiyoon/CBNGR">[github]</a>
+          <a href="https://www.youtube.com/channel/UCHkPiWsitxr_0VdqVc61ISA">[video]</a>
+        </p>
+        <p class="links">
+          <a href="https://jeiyoon.github.io/data/sjw_final.pdf">[slide]</a>
+          <span>(Finals, 2021.10.16)</span>
+        </p>
+        <p class="links">
+          <a href="https://jeiyoon.github.io/data/sjw_semi.pdf">[slide]</a>
+          <span>(Semifinals, 30/60 = 50%, 2021.09.11)</span>
+        </p>
+        <p class="links">
+          <a href="https://jeiyoon.github.io/data/sjw_pre.pdf">[slide]</a>
+          <span>(Preliminaries, 60/170 = 35.29%, 2021.08.09)</span>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/tave.png" alt=""></div>
+      <div class="body">
+        <h3>4th Industrial Revolution Research Club</h3>
+        <p class="venue"><em><a href="https://www.instagram.com/tave_wave/">TAVE</a></em>, leader of the team "Reinforcement Learning"</p>
+        <p class="venue"><em>Summer 2020 - Winter 2020</em></p>
+        <p class="links">
+          <a href="data/tave_award4.pdf">[pdf]</a>
+          <span>(Outstanding member award, 5/69 = 7.24%, 2020.11)</span>
+        </p>
+        <p class="links">
+          <a href="data/tave_award3.pdf">[pdf]</a>
+          <span>(First place, 1/8 = 12.5%, 2020.11)</span>
+        </p>
+        <p class="links">
+          <a href="data/tave_award2.pdf">[pdf]</a>
+          <span>(Outstanding member award, 3/69 = 4.34%, 2020.09)</span>
+        </p>
+        <p class="links">
+          <a href="data/tave_award1.pdf">[pdf]</a>
+          <span>(Second place, 2/20 = 10%, 2020.09)</span>
+        </p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/korea.jpg" alt=""></div>
+      <div class="body">
+        <h3>Teaching Assistant Scholarships</h3>
+        <p class="venue"><em><a href="http://www.korea.edu/mbshome/mbs/en/index.do">Korea University</a></em>, 1st Semester, 2020</p>
+        <p class="venue"><em>Spring 2020 - Summer 2020</em></p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/snu.png" alt=""></div>
+      <div class="body">
+        <h3>4th Industrial Revolution Academy</h3>
+        <p class="venue"><em><a href="https://en.snu.ac.kr/">Seoul National University</a></em></p>
+        <p class="venue"><em>Summer 2017 - Spring 2018</em></p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="thumb"><img src="images/kosaf5.png" alt=""></div>
+      <div class="body">
+        <h3>Mentoring to Nurture Next Generation Leaders</h3>
+        <p class="venue"><em><a href="https://www.kosaf.go.kr/eng/jsp/main.jsp">Korea Student Aid Foundation</a>, mentored by <a href="https://www.kari.re.kr/eng/sub01_01.do">Lim Cheol-ho</a></em></p>
+        <p class="venue"><em>Spring 2017 - Winter 2017</em></p>
+        <p class="links">
+          <a href="data/kosaf.pdf">[pdf]</a>
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    I like <a href="https://jonbarron.info/">this website</a> too 😊
+  </footer>
+
+</main>
 </body>
-
 </html>
