@@ -21,7 +21,7 @@
       --link-hover: #ffb454;
       --accent: #ff7a7a;
       --plate: #ffffff;
-      --max: 880px;
+      --max: 940px;
     }
 
     * { box-sizing: border-box; }
@@ -147,25 +147,20 @@
     /* ---------- entries (papers, awards, ...) ---------- */
     .entry {
       display: grid;
-      grid-template-columns: 160px minmax(0, 1fr);
-      gap: 26px;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 28px;
       padding: 24px 0;
       border-top: 1px solid var(--line);
       align-items: start;
     }
     .entry:first-of-type { border-top: 0; }
     .thumb {
-      width: 160px;
-      height: 160px;
-      padding: 10px;
+      width: 240px;
+      padding: 8px;
       background: var(--plate);
       border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
     }
-    .thumb img { max-height: 100%; object-fit: contain; }
+    .thumb img { width: 100%; max-height: 280px; object-fit: contain; border-radius: 6px; }
     .entry h3 {
       margin: 0 0 6px;
       font-size: 1.125rem;
@@ -197,7 +192,7 @@
     }
 
     /* ---------- mobile ---------- */
-    @media (max-width: 720px) {
+    @media (max-width: 760px) {
       .page { padding: 22px 16px 44px; }
       .intro { grid-template-columns: 1fr; gap: 20px; }
       .portrait { order: -1; width: min(60vw, 220px); margin: 0 auto; }
@@ -208,7 +203,7 @@
       .news li { grid-template-columns: 1fr; gap: 0; padding: 10px 0; }
       .news .date { font-size: 0.875rem; }
       .entry { grid-template-columns: 1fr; gap: 14px; padding: 22px 0; }
-      .thumb { width: 140px; height: 140px; }
+      .thumb { width: min(100%, 320px); }
       .entry h3 { font-size: 1.0625rem; }
     }
   </style>
@@ -365,14 +360,14 @@
     <article class="entry">
       <div class="thumb"><img src="images/LAM.png" alt=""></div>
       <div class="body">
-        <h3>Lost Ark Mobile</h3>
+        <h3>LOST ARK MOBILE</h3>
         <p class="venue"><em><a href="https://www.smilegate.com/en">Smilegate</a></em></p>
-        <p class="venue"><em>2026.05.11 - present (release: TBA)</em></p>
+        <p class="venue"><em>2026.05 - present (release: TBA)</em></p>
         <p class="links">
           <a href="https://youtu.be/ZvlYP_eu6FQ?si=X-Txs4XXKAryaR_1">[trailer]</a>
           <a href="https://lostarkmobile.onstove.com/main">[official site]</a>
         </p>
-        <p class="desc">Lost Ark Mobile brings a world of adventure and epic stories to mobile. Get ready to begin your journey.</p>
+        <p class="desc">LOST ARK MOBILE, a world full of adventure and epic stories. Coming soon.</p>
       </div>
     </article>
 
